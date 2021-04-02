@@ -164,9 +164,7 @@ jobs:
 
       - name: Install Ninja Builder and Cmake
         shell: bash
-        run: |
-          apt install -y ninja-build cmake
-          apt install --fix-missing
+        run: apt install -y ninja-build cmake
 
       - name: Build
         run: |
