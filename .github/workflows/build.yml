@@ -166,12 +166,9 @@ jobs:
 
       - name: Build
         run: |
-          echo "export ANDROID_NDK_HOME=$GITHUB_WORKSPACE/NDK_ETL/ndk-bundle" > ~/.bashrc
-          source ~/.bashrc
           chmod -R 775 $GITHUB_WORKSPACE/NDK_ETL/ndk-bundle
-          echo $ANDROID_NDK_HOME
           echo "cmake.dir=/usr/local/" | tee -a local.properties
-          echo "ndk.dir=/NDK_ETL/ndk-bundle/" | tee -a local.properties
+          echo "ndk.dir=/home/runner/work/etlegacy/etlegacy/NDK_ETL/ndk-bundle/" | tee -a local.properties
           ./gradlew clean build
           ls -R
 
