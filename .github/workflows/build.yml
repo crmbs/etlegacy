@@ -171,7 +171,7 @@ jobs:
           chmod -R 775 $ANDROID_NDK_HOME
           echo "cmake.dir=/usr/local/" | tee -a local.properties
           echo $ANDROID_NDK_HOME
-          cd etlegacy && git checkout dab1510582043a0faa3e765aa0616733efac42de
+          cd etlegacy && git checkout dab1510582043a0faa3e765aa0616733efac42de && cd ..
           ./gradlew clean build
           ls -R
 
