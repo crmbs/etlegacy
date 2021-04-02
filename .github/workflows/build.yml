@@ -162,9 +162,9 @@ jobs:
           repository: rafal1137/NDK_ETL
           path: NDK_ETL
 
-      - name: Install Ninja Builder
+      - name: Install Ninja Builder and Cmake
         shell: bash
-        run: apt install -y ninja-build
+        run: apt install -y ninja-build cmake
 
       - name: Build
         run: |
