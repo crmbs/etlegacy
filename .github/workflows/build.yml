@@ -164,7 +164,7 @@ jobs:
 
       - name: Install Ninja Builder
         shell: bash
-        run: sudo apt install -y ninja-build
+        run: apt install -y ninja-build
 
       - name: Build
         run: |
