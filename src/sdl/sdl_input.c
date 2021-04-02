@@ -595,14 +595,14 @@ static void IN_GobbleMotionEvents(void)
 static void IN_GrabMouse(qboolean grab, qboolean relative)
 {
 	static qboolean mouse_grabbed   = qfalse, mouse_relative = qfalse;
-#if !defined(__ANDROID__) || __ANDROID_API__ >= 23
+#if !defined(__ANDROID__) || __ANDROID_API__ > 23
 	int             relative_result = 0;
 #endif
 
 	if (relative == !mouse_relative)
 	{
 		SDL_ShowCursor(!relative);
-#if !defined(__ANDROID__) || __ANDROID_API__ >= 23
+#if !defined(__ANDROID__) || __ANDROID_API__ > 23
 		// On Android Phones with API <= 23 this is causing App to close since it could not
 		// set relative mouse location (Mouse location is always at top left side of screen)
 		if ((relative_result = SDL_SetRelativeMouseMode((SDL_bool)relative)) != 0)
@@ -1346,6 +1346,14 @@ static void IN_ProcessEvents(void)
 				Cvar_SetValue("com_unfocused", 1);
 				break;
 			case SDL_WINDOWEVENT_ENTER:
+			{
+				Uint32 flags = SDL_GetWindowFlags(mainScreen);
+				// We might not have focus, just the user moving his mouse over things
+				if (!(flags & SDL_WINDOW_INPUT_FOCUS))
+				{
+					break;
+				}
+			}
 			case SDL_WINDOWEVENT_FOCUS_GAINED:
 			{
 				Cvar_SetValue("com_unfocused", 0);

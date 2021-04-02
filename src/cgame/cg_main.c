@@ -230,6 +230,7 @@ vmCvar_t cg_autoAction;
 vmCvar_t cg_autoReload;
 vmCvar_t cg_bloodDamageBlend;
 vmCvar_t cg_bloodFlash;
+vmCvar_t cg_bloodFlashTime;
 vmCvar_t cg_complaintPopUp;
 vmCvar_t cg_crosshairAlpha;
 vmCvar_t cg_crosshairAlphaAlt;
@@ -484,6 +485,7 @@ static cvarTable_t cvarTable[] =
 	{ &cg_autoReload,             "cg_autoReload",             "1",           CVAR_ARCHIVE,                 0 },
 	{ &cg_bloodDamageBlend,       "cg_bloodDamageBlend",       "1.0",         CVAR_ARCHIVE,                 0 },
 	{ &cg_bloodFlash,             "cg_bloodFlash",             "1.0",         CVAR_ARCHIVE,                 0 },
+	{ &cg_bloodFlashTime,         "cg_bloodFlashTime",         "1500",        CVAR_ARCHIVE,                 0 },
 	{ &cg_complaintPopUp,         "cg_complaintPopUp",         "1",           CVAR_ARCHIVE,                 0 },
 	{ &cg_crosshairAlpha,         "cg_crosshairAlpha",         "1.0",         CVAR_ARCHIVE,                 0 },
 	{ &cg_crosshairAlphaAlt,      "cg_crosshairAlphaAlt",      "1.0",         CVAR_ARCHIVE,                 0 },
@@ -991,7 +993,7 @@ char *CG_generateFilename(void)
 
 	trap_RealTime(&ct);
 	fullFilename[0] = '\0';
-	prefix[0] = '\0';
+	prefix[0]       = '\0';
 
 	if (cg_autoFolders.integer)
 	{
@@ -999,17 +1001,17 @@ char *CG_generateFilename(void)
 	}
 
 	Com_sprintf(fullFilename, sizeof(fullFilename), "%s%d-%02d-%02d-%02d%02d%02d-%s%s", prefix,
-	          1900 + ct.tm_year, ct.tm_mon + 1, ct.tm_mday,
-	          ct.tm_hour, ct.tm_min, ct.tm_sec,
-	          Info_ValueForKey(pszServerInfo, "mapname"),
+	            1900 + ct.tm_year, ct.tm_mon + 1, ct.tm_mday,
+	            ct.tm_hour, ct.tm_min, ct.tm_sec,
+	            Info_ValueForKey(pszServerInfo, "mapname"),
 #ifdef FEATURE_MULTIVIEW
-	          (cg.mvTotalClients < 1) ?
+	            (cg.mvTotalClients < 1) ?
 #endif
-	          ""
+	            ""
 #ifdef FEATURE_MULTIVIEW
 	          : "-MVD"
 #endif
-	          );
+	            );
 
 	return fullFilename;
 }
@@ -2561,6 +2563,7 @@ void CG_LoadHudMenu(void)
 void CG_AssetCache(void)
 {
 	cgDC.Assets.gradientBar         = trap_R_RegisterShaderNoMip(ASSET_GRADIENTBAR);
+	cgDC.Assets.gradientRound       = trap_R_RegisterShaderNoMip(ASSET_GRADIENTROUND);
 	cgDC.Assets.fxBasePic           = trap_R_RegisterShaderNoMip(ART_FX_BASE);
 	cgDC.Assets.fxPic[0]            = trap_R_RegisterShaderNoMip(ART_FX_RED);
 	cgDC.Assets.fxPic[1]            = trap_R_RegisterShaderNoMip(ART_FX_YELLOW);

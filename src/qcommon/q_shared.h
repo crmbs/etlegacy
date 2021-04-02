@@ -73,7 +73,11 @@
 #define RPRATIO43   (1 / RATIO43)   ///<
 #endif
 
+#ifdef __ANDROID__
+#define CONFIG_NAME_DEFAULT      "default_android.cfg"
+#else
 #define CONFIG_NAME_DEFAULT      "default.cfg"         ///< if you change this adjust files.c - name ist still hard coded in pk3 checks
+#endif
 #define CONFIG_NAME_DEFAULT_LEFT "default_left.cfg"
 
 #define DEMOEXT "dm_"          ///< standard demo extension
@@ -349,6 +353,22 @@ static ID_INLINE float idSqrt(float x)
 #define PATH_SEP '/'
 
 #endif //  __NetBSD__
+
+//======================= ANDROID DEFINES =================================
+
+// the mac compiler can't handle >32k of locals, so we
+// just waste space and make big arrays static...
+#ifdef __ANDROID__
+
+#ifdef __arm__
+#define CPUSTRING   "android-armeabi-v7a"
+#elif defined __aarch64__
+#define CPUSTRING   "android-arm64-v8a"
+#endif
+
+#define PATH_SEP '/'
+
+#endif // __ANDROID__
 
 //=============================================================
 
