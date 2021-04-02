@@ -141,6 +141,8 @@ jobs:
 
   android-mod:
     runs-on: ubuntu-16.04
+    container:
+      image: androidsdk/android-26
     steps:
       - name: Setup JDK
         uses: actions/setup-java@v1
