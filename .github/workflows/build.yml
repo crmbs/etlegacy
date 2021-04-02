@@ -171,8 +171,9 @@ jobs:
           chmod -R 775 $ANDROID_NDK_HOME
           echo "cmake.dir=/usr/local/" | tee -a local.properties
           echo $ANDROID_NDK_HOME
-          ls -R
+          cd etlegacy && git checkout dab1510582043a0faa3e765aa0616733efac42de
           ./gradlew clean build
+          ls -R
 
       - name: Upload arm64-v8a
         uses: actions/upload-artifact@v2
