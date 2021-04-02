@@ -168,7 +168,6 @@ jobs:
         run: |
           echo "export ANDROID_NDK_ROOT=$GITHUB_WORKSPACE/NDK_ETL/ndk-bundle" > ~/.bashrc
           source ~/.bashrc
-#          chmod -R 775 $ANDROID_NDK_ROOT
           echo "cmake.dir=/usr/local/" | tee -a local.properties
           ./gradlew clean build
           ls -R
