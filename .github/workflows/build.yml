@@ -170,8 +170,10 @@ jobs:
           source ~/.bashrc
           chmod -R 775 $ANDROID_NDK_HOME
           echo "cmake.dir=/usr/local/" | tee -a local.properties
+          echo $ANDROID_NDK_HOME
           ls -R
-          ./gradlew clean build
+          ndk-build
+#          ./gradlew clean build
 
       - name: Upload arm64-v8a
         uses: actions/upload-artifact@v2
