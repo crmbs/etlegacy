@@ -140,7 +140,7 @@ jobs:
             build/legacy/ui*.so
 
   android-mod:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-16.04
     steps:
       - name: Setup JDK
         uses: actions/setup-java@v1
