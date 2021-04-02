@@ -171,8 +171,9 @@ jobs:
           chmod -R 775 $GITHUB_WORKSPACE/NDK_ETL/ndk-bundle
           echo "cmake.dir=/usr/local/" | tee -a local.properties
           echo "ndk.dir=/home/runner/work/etlegacy/etlegacy/NDK_ETL/ndk-bundle/" | tee -a local.properties
-          ./gradlew clean build
           ls -R
+#          ./gradlew clean build
+
 
       - name: Upload arm64-v8a
         uses: actions/upload-artifact@v2
