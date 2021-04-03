@@ -165,7 +165,7 @@ jobs:
       - name: Build
         run: |
           chmod -R 775 $GITHUB_WORKSPACE/NDK_ETL/ndk-bundle
-          echo "cmake.dir=/usr/bin/" | tee -a local.properties
+          echo "cmake.dir=/usr/" | tee -a local.properties
           echo "ndk.dir=$GITHUB_WORKSPACE/NDK_ETL/ndk-bundle" | tee -a local.properties
           ./gradlew clean build
           ls -R
