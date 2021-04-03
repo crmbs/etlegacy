@@ -356,6 +356,8 @@ static ID_INLINE float idSqrt(float x)
 
 //======================= ANDROID DEFINES =================================
 
+// Undef CPUSTRING macro here to avoid warning spam
+#undef CPUSTRING
 // the mac compiler can't handle >32k of locals, so we
 // just waste space and make big arrays static...
 #ifdef __ANDROID__
