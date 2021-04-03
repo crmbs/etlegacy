@@ -3757,9 +3757,16 @@ void G_LogExit(const char *string)
 	gclient_t *cl;
 	char      cs[MAX_STRING_CHARS];
 
-	// do not allow LogExit to be called in non-playing gamestate
+	// do not allow G_LogExit to be called in non-playing gamestate
 	if (g_gamestate.integer != GS_PLAYING)
 	{
+		return;
+	}
+
+	// ensure exit is not triggered twice due to faulty map scripts
+	if (level.intermissionQueued)
+	{
+		G_LogPrintf("Exit: %s (already triggered)\n", string);
 		return;
 	}
 
@@ -3767,7 +3774,7 @@ void G_LogExit(const char *string)
 
 #ifdef FEATURE_RATING
 	// record match ratings
-	if (g_skillRating.integer)
+	if (g_skillRating.integer && g_gametype.integer != GT_WOLF_STOPWATCH && g_gametype.integer != GT_WOLF_LMS)
 	{
 		for (i = 0; i < level.numConnectedClients; i++)
 		{
@@ -4287,8 +4294,8 @@ void CheckExitRules(void)
 				G_Script_ScriptEvent(level.gameManager, "trigger", "timelimit_hit");
 			}
 
-			// do not allow LogExit to be called in non-playing gamestate
-			// - This already happens in LogExit, but we need it for the print command
+			// do not allow G_LogExit to be called in non-playing gamestate
+			// - This already happens in G_LogExit, but we need it for the print command
 			if (g_gamestate.integer != GS_PLAYING)
 			{
 				return;
