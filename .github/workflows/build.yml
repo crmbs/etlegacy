@@ -142,7 +142,7 @@ jobs:
   android-mod:
     runs-on: ubuntu-16.04
     container:
-      image: thyrlian/android-sdk:6.0
+      image: rafal1137/etl_android
     steps:
       - name: Setup JDK
         uses: actions/setup-java@v1
@@ -161,10 +161,6 @@ jobs:
         with:
           repository: rafal1137/NDK_ETL
           path: NDK_ETL
-
-      - name: Install Ninja Builder and Cmake
-        shell: bash
-        run: apt -y install ninja-build cmake
 
       - name: Build
         run: |
