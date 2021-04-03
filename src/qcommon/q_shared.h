@@ -360,6 +360,10 @@ static ID_INLINE float idSqrt(float x)
 // just waste space and make big arrays static...
 #ifdef __ANDROID__
 
+#ifdef CPUSTRING
+#undef CPUSTRING
+#endif
+
 #ifdef __arm__
 #define CPUSTRING   "android-armeabi-v7a"
 #elif defined __aarch64__
