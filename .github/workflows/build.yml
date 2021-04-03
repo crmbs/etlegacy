@@ -164,12 +164,12 @@ jobs:
 
       - name: Install Ninja Builder and Cmake
         shell: bash
-        run: apt install -y ninja-build cmake
+        run: apt -y install ninja-build cmake
 
       - name: Build
         run: |
           chmod -R 775 $GITHUB_WORKSPACE/NDK_ETL/ndk-bundle
-          echo "cmake.dir=/usr/local/" | tee -a local.properties
+          echo "cmake.dir=/usr/bin/" | tee -a local.properties
           echo "ndk.dir=$GITHUB_WORKSPACE/NDK_ETL/ndk-bundle" | tee -a local.properties
           ./gradlew clean build
           ls -R
