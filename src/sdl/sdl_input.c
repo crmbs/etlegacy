@@ -1303,13 +1303,20 @@ static void IN_ProcessEvents(void)
 
 			break;
 		case SDL_DROPFILE:
+			Com_Printf(S_COLOR_YELLOW "Drop file: %s received\n", e.drop.file);
+
 			if (!Q_strncmp(e.drop.file, "et://", 5))
 			{
 				Cbuf_AddText(va("connect \"%s\"", e.drop.file));
 			}
 			else if (FS_IsDemoExt(e.drop.file, -1))
 			{
-				Cbuf_AddText(va("demo \"%s\"", e.drop.file));
+				char buffer[MAX_OSPATH];
+				Com_Memset(buffer, 0, sizeof(buffer));
+				Q_strcpy(buffer, e.drop.file);
+				COM_FixPath(buffer);
+				// Set the FS to "dirty" mode for the demo playback
+				Cbuf_AddText(va("demo dirty \"%s\"", buffer));
 			}
 			SDL_free(e.drop.file);
 			break;

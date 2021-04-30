@@ -599,7 +599,9 @@ static cvarTable_t cvarTable[] =
 
 	{ &cg_optimizePrediction,     "cg_optimizePrediction",     "1",           CVAR_ARCHIVE,                 0 },   // unlagged optimized prediction
 
+#if defined(FEATURE_RATING) || defined(FEATURE_PRESTIGE)
 	{ &cg_scoreboard,             "cg_scoreboard",             "0",           CVAR_ARCHIVE,                 0 },
+#endif
 
 	{ &cg_quickchat,              "cg_quickchat",              "0",           CVAR_ARCHIVE,                 0 },
 
@@ -1747,7 +1749,9 @@ static void CG_RegisterGraphics(void)
 	cgs.media.medicReviveShader     = trap_R_RegisterShader("sprites/medic_revive");
 	cgs.media.disguisedShader       = trap_R_RegisterShader("sprites/undercover");
 
-	cgs.media.destroyShader = trap_R_RegisterShader("sprites/destroy");
+	cgs.media.constructShader = trap_R_RegisterShader("sprites/construct");
+	cgs.media.destroyShader   = trap_R_RegisterShader("sprites/destroy");
+	cgs.media.escortShader    = trap_R_RegisterShader("sprites/escort");
 
 	cgs.media.voiceChatShader = trap_R_RegisterShader("sprites/voiceChat");
 	cgs.media.balloonShader   = trap_R_RegisterShader("sprites/balloon3");

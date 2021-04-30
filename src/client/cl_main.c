@@ -420,7 +420,7 @@ void CL_ShutdownAll(void)
 	cls.soundRegistered = qfalse;
 
 	// stop recording on map change etc, demos aren't valid over map changes anyway
-	if (clc.demorecording)
+	if (clc.demo.recording)
 	{
 		CL_StopRecord_f();
 	}
@@ -518,7 +518,7 @@ void CL_MapLoading(void)
 static void CL_UpdateGUID(void)
 {
 	fileHandle_t f;
-	int          len;
+	long         len;
 
 	len = FS_SV_FOpenFileRead(BASEGAME "/" ETKEY_FILE, &f);
 	FS_FCloseFile(f);
@@ -545,11 +545,8 @@ static void CL_UpdateGUID(void)
  */
 static void CL_GenerateETKey(void)
 {
-	int          len = 0;
-	char         buff[ETKEY_SIZE];
+	long         len = 0;
 	fileHandle_t f;
-
-	buff[0] = '\0';
 
 	len = FS_SV_FOpenFileRead(BASEGAME "/" ETKEY_FILE, &f);
 	FS_FCloseFile(f);
@@ -563,13 +560,15 @@ static void CL_GenerateETKey(void)
 		time_t    tt;
 		struct tm *t;
 		int       last;
+		char      buff[ETKEY_SIZE];
 
+		buff[0] = '\0';
 		tt = time(NULL);
 		t  = localtime(&tt);
 		srand(Sys_Milliseconds());
 		last = rand() % 9999;
 
-		Com_sprintf(buff, sizeof(buff), "0000001002%04i%02i%02i%02i%02i%02i%04i", t->tm_year, t->tm_mon, t->tm_mday, t->tm_hour, t->tm_min, t->tm_sec, last);
+		Com_sprintf(buff, sizeof(buff), "0000001002%04i%02i%02i%02i%02i%02i%03i", t->tm_year, t->tm_mon, t->tm_mday, t->tm_hour, t->tm_min, t->tm_sec, last);
 
 		f = FS_SV_FOpenFileWrite(BASEGAME "/" ETKEY_FILE);
 		if (!f)
@@ -619,7 +618,7 @@ void CL_Disconnect(qboolean showMainMenu)
 
 	Cvar_Set("cl_freezeDemo", "0");
 
-	if (clc.demorecording)
+	if (clc.demo.recording)
 	{
 		CL_StopRecord_f();
 	}
@@ -713,7 +712,7 @@ void CL_ForwardCommandToServer(const char *string)
 		return;
 	}
 
-	if (clc.demoplaying || cls.state < CA_CONNECTED || cmd[0] == '+')
+	if (clc.demo.playing || cls.state < CA_CONNECTED || cmd[0] == '+')
 	{
 		Com_Printf("Unknown command \"%s\"\n", rc(cmd));
 		return;
@@ -818,7 +817,7 @@ CONSOLE COMMANDS
  */
 static void CL_ForwardToServer_f(void)
 {
-	if (cls.state != CA_ACTIVE || clc.demoplaying)
+	if (cls.state != CA_ACTIVE || clc.demo.playing)
 	{
 		Com_Printf("Not connected to a server\n");
 		return;
@@ -1429,7 +1428,7 @@ void CL_AddFavServer_f(void)
         return;
     }
 
-    if (clc.demoplaying)
+    if (clc.playing)
     {
         return;
     }
@@ -1486,7 +1485,7 @@ void CL_CheckForResend(void)
 {
 	char buffer[64];
 	// don't send anything if playing back a demo
-	if (clc.demoplaying)
+	if (clc.demo.playing)
 	{
 		return;
 	}
@@ -2100,7 +2099,7 @@ void CL_PacketEvent(netadr_t from, msg_t *msg)
 
 	// we don't know if it is ok to save a demo message until
 	// after we have parsed the frame
-	if (clc.demorecording && !clc.demowaiting)
+	if (clc.demo.recording && !clc.demo.waiting)
 	{
 		CL_WriteDemoMessage(msg, headerBytes);
 	}
@@ -2115,7 +2114,7 @@ void CL_CheckTimeout(void)
 	if ((!cl_paused->integer || !sv_paused->integer)
 	    && cls.state >= CA_CONNECTED && cls.state != CA_CINEMATIC
 	    && cls.realtime - clc.lastPacketTime > cl_timeout->value * 1000
-	    && !(clc.demoplaying && cl_freezeDemo->integer))
+	    && !(clc.demo.playing && cl_freezeDemo->integer))
 	{
 		if (++cl.timeoutcount > 5)        // timeoutcount saves debugger
 		{
@@ -2179,8 +2178,8 @@ void CL_StartVideoRecording(const char *aviname)
 			c     = last / 10;
 			last -= c * 10;
 			d     = last;
-			Com_Printf("videos/%s%d%d%d%d.avi\n", clc.demoName, a, b, c, d);
-			Com_sprintf(filename, MAX_OSPATH, "videos/%s%d%d%d%d.avi", clc.demoName, a, b, c, d);
+			Com_Printf("videos/%s%d%d%d%d.avi\n", clc.demo.demoName, a, b, c, d);
+			Com_sprintf(filename, MAX_OSPATH, "videos/%s%d%d%d%d.avi", clc.demo.demoName, a, b, c, d);
 
 			if (!FS_FileExists(filename))
 			{
@@ -2208,7 +2207,7 @@ void CL_Video_f(void)
 {
 	char filename[MAX_OSPATH];
 
-	if (!clc.demoplaying)
+	if (!clc.demo.playing)
 	{
 		Com_Printf("The video command can only be used when playing back demos\n");
 		return;
@@ -2303,7 +2302,7 @@ void CL_Frame(int msec)
 	}
 
 	// if recording an avi, lock to a fixed fps
-	if (cl_avidemo->integer && msec && ((cls.state == CA_ACTIVE && clc.demoplaying) || cl_forceavidemo->integer))
+	if (cl_avidemo->integer && msec && ((cls.state == CA_ACTIVE && clc.demo.playing) || cl_forceavidemo->integer))
 	{
 		float fps;
 		float frameDuration;
@@ -4160,7 +4159,7 @@ void CL_ServerStatus_f(void)
 
 	if (argc != 2 && argc != 3)
 	{
-		if (cls.state != CA_ACTIVE || clc.demoplaying)
+		if (cls.state != CA_ACTIVE || clc.demo.playing)
 		{
 			Com_Printf("Not connected to a server.\nusage: serverstatus [-4|-6] server\n");
 			return;

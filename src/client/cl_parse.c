@@ -439,9 +439,9 @@ void CL_ParseSnapshot(msg_t *msg)
 	{
 		newSnap.valid = qtrue;      // uncompressed frame
 		old           = NULL;
-		if (clc.demorecording)
+		if (clc.demo.recording)
 		{
-			clc.demowaiting = qfalse;   // we can start recording now
+			clc.demo.waiting = qfalse;   // we can start recording now
 			//if(cl_autorecord->integer) {
 			//  Cvar_Set( "g_synchronousClients", "0" );
 			//}
@@ -631,11 +631,11 @@ void CL_SystemInfoChanged(void)
 	Com_Memset(&entLastVisible, 0, sizeof(entLastVisible));
 
 	// don't set any vars when playing a demo
-	if (clc.demoplaying)
+	if (clc.demo.playing)
 	{
 		// allow running demo in pure mode to simulate server environment,
 		// but still setup the referenced packages for the container system to work
-		CL_SetPurePaks(Cvar_VariableIntegerValue("sv_pure") == 0);
+		CL_SetPurePaks(!clc.demo.pure);
 		return;
 	}
 
@@ -818,14 +818,14 @@ void CL_ParseGamestate(msg_t *msg)
 
 	// This used to call CL_StartHunkUsers, but now we enter the download state before loading the
 	// cgame
-	if (!clc.demoplaying)
+	if (!clc.demo.playing)
 	{
 		Com_InitDownloads();
 	}
 	else
 	{
 		char missingFiles[MAX_TOKEN_CHARS] = { '\0' };
-		if (Cvar_VariableIntegerValue("sv_pure") != 0 && FS_ComparePaks(missingFiles, sizeof(missingFiles), qfalse))
+		if (clc.demo.pure && FS_ComparePaks(missingFiles, sizeof(missingFiles), qfalse))
 		{
 			Com_Error(ERR_DROP, "Missing required packages: %s", missingFiles);
 		}

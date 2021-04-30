@@ -1609,7 +1609,9 @@ typedef struct
 	qhandle_t objectiveSimpleIcon;
 	qhandle_t readyShader;
 
+	qhandle_t constructShader;
 	qhandle_t destroyShader;
+	qhandle_t escortShader;
 
 	qhandle_t viewBloodShader;
 	qhandle_t tracerShader;
@@ -2953,7 +2955,7 @@ const char *CG_TranslateString(const char *string);
 
 void CG_InitStatsDebug(void);
 void CG_StatsDebugAddText(const char *text);
-qhandle_t CG_GetCompassIcon(centity_t *cent, qboolean drawVoicesChat, qboolean drawFireTeam);
+qhandle_t CG_GetCompassIcon(entityState_t *ent, qboolean drawVoicesChat, qboolean drawFireTeam);
 void CG_DrawCompassIcon(float x, float y, float w, float h, vec3_t origin, vec3_t dest, qhandle_t shader, float dstScale, float baseSize);
 
 void CG_AddLagometerFrameInfo(void);
