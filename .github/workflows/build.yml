@@ -154,7 +154,7 @@ jobs:
         with:
           repository: etlegacy/etlegacy-android
           submodules: true
-          fetch-depth: 0
+          fetch-depth: 1
 
       - name: Downloading NDK
         uses: actions/checkout@v2
@@ -397,7 +397,7 @@ jobs:
         with:
           repository: etlegacy/etlegacy-android
           submodules: true
-          fetch-depth: 0
+          fetch-depth: 1
 
       - name: Setup GIT_TAG Env
         run: |
