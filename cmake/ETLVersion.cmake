@@ -178,7 +178,7 @@ endif()
 message(STATUS "Version: ${ETLEGACY_VERSION_MAJOR}.${ETLEGACY_VERSION_MINOR}.${ETLEGACY_VERSION_PATCH}.${ETLEGACY_VERSION_COMMIT} and int version: ${ETL_CMAKE_VERSION_INT}")
 
 # Mod version
-configure_file("${CMAKE_CURRENT_SOURCE_DIR}/cmake/git_version.h.in" "${CMAKE_CURRENT_SOURCE_DIR}/etmain/ui/git_version.h" @ONLY)
+configure_file("${CMAKE_CURRENT_SOURCE_DIR}/cmake/git_version.h.in" "${CMAKE_CURRENT_SOURCE_DIR}/main/ui/git_version.h" @ONLY)
 # This is for NSIS
 string(REPLACE "," "." ETL_CMAKE_PROD_VERSIONDOT ${ETL_CMAKE_PROD_VERSION})
 configure_file("${CMAKE_CURRENT_SOURCE_DIR}/cmake/git_version.h.in" "${CMAKE_CURRENT_BINARY_DIR}/include/git_version.h" @ONLY)

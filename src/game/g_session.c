@@ -35,7 +35,7 @@
  */
 
 #include "g_local.h"
-#include "../../etmain/ui/menudef.h"
+#include "../../main/ui/menudef.h"
 
 /**
  * SESSION DATA

@@ -8,9 +8,9 @@ install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/misc/description.txt"
 	PERMISSIONS OWNER_WRITE OWNER_READ GROUP_READ WORLD_READ
 )
 
-# misc/etmain/ adds
-install(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/misc/etmain/"
-	DESTINATION "${INSTALL_DEFAULT_MODDIR}/etmain"
+# misc/main/ adds
+install(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/misc/main/"
+	DESTINATION "${INSTALL_DEFAULT_MODDIR}/main"
 )
 
 # misc adds
@@ -70,30 +70,30 @@ endif()
 if(ET_FS_BASEPATH AND INSTALL_DEFAULT_BASEDIR)
 	message(STATUS "Installing genuine W:ET files")
 
-	install(FILES "${ET_FS_BASEPATH}/etmain/pak0.pk3"
-		DESTINATION "${INSTALL_DEFAULT_MODDIR}/etmain"
+	install(FILES "${ET_FS_BASEPATH}/main/pak0.pk3"
+		DESTINATION "${INSTALL_DEFAULT_MODDIR}/main"
 		PERMISSIONS OWNER_WRITE OWNER_READ GROUP_READ WORLD_READ
 	)
 
-	install(FILES "${ET_FS_BASEPATH}/etmain/pak1.pk3"
-		DESTINATION "${INSTALL_DEFAULT_MODDIR}/etmain"
+	install(FILES "${ET_FS_BASEPATH}/main/pak1.pk3"
+		DESTINATION "${INSTALL_DEFAULT_MODDIR}/main"
 		PERMISSIONS OWNER_WRITE OWNER_READ GROUP_READ WORLD_READ
 	)
 
-	install(FILES "${ET_FS_BASEPATH}/etmain/pak2.pk3"
-		DESTINATION "${INSTALL_DEFAULT_MODDIR}/etmain"
+	install(FILES "${ET_FS_BASEPATH}/main/pak2.pk3"
+		DESTINATION "${INSTALL_DEFAULT_MODDIR}/main"
 		PERMISSIONS OWNER_WRITE OWNER_READ GROUP_READ WORLD_READ
 	)
 
 	# personal data (owner only)
-	install(FILES "${ET_FS_BASEPATH}/etmain/video/etintro.roq"
-		DESTINATION "${INSTALL_DEFAULT_MODDIR}/etmain/video"
+	install(FILES "${ET_FS_BASEPATH}/main/video/etintro.roq"
+		DESTINATION "${INSTALL_DEFAULT_MODDIR}/main/video"
 		PERMISSIONS OWNER_WRITE OWNER_READ
 	)
 
 	if(ET_KEY)
-		install(FILES "${ET_FS_BASEPATH}/etmain/etkey"
-			DESTINATION "${INSTALL_DEFAULT_MODDIR}/etmain"
+		install(FILES "${ET_FS_BASEPATH}/main/etkey"
+			DESTINATION "${INSTALL_DEFAULT_MODDIR}/main"
 			PERMISSIONS OWNER_WRITE OWNER_READ
 		)
 	endif(ET_KEY)
@@ -101,7 +101,7 @@ elseif(NOT ET_FS_BASEPATH AND INSTALL_DEFAULT_BASEDIR)
 	message(STATUS "***********************************************************")
 	message(STATUS "Genuine W:ET files are not copied - ET: Legacy won't start!")
 	message(STATUS "In order to start the game, copy the pak0-2.pk3 asset files")
-	message(STATUS "to ${INSTALL_DEFAULT_MODDIR}/etmain")
+	message(STATUS "to ${INSTALL_DEFAULT_MODDIR}/main")
 	message(STATUS "***********************************************************")
 endif()
 

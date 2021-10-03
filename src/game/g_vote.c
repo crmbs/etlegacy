@@ -34,7 +34,7 @@
  */
 
 #include "g_local.h"
-#include "../../etmain/ui/menudef.h" // For vote options
+#include "../../main/ui/menudef.h" // For vote options
 
 #define T_FFA   0x01
 #define T_1V1   0x02

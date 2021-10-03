@@ -13,12 +13,12 @@ SOURCEDIR="${_SRC}/src"
 PROJECTDIR="${_SRC}/project"
 
 if [[ `uname -s` == "Darwin" ]]; then
-	MODMAIN="${HOME}/Library/Application Support/etlegacy/etmain"
+	MODMAIN="${HOME}/Library/Application Support/etlegacy/main"
 else
-	MODMAIN="${HOME}/.etlegacy/etmain"
+	MODMAIN="${HOME}/.etlegacy/main"
 fi
 
-ETLEGACY_MIRROR="https://mirror.etlegacy.com/etmain/"
+ETLEGACY_MIRROR="https://mirror.etlegacy.com/main/"
 ETLEGACY_VERSION=`git describe --abbrev=7 2>/dev/null`
 INSTALL_PREFIX=${HOME}/etlegacy
 

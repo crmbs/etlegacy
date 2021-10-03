@@ -34,7 +34,7 @@
  */
 
 #include "g_local.h"
-#include "../../etmain/ui/menudef.h"
+#include "../../main/ui/menudef.h"
 #include "g_strparse.h"
 
 #ifdef FEATURE_OMNIBOT

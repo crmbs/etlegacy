@@ -13,8 +13,8 @@ WORKDIR /legacy/server
 # This can be used to mount a path for files to be written like logiles, or config files
 VOLUME /legacy/homepath
 
-# This can be used to mount a "readonly" volume for etmain pk3's and maps
-VOLUME /legacy/server/etmain
+# This can be used to mount a "readonly" volume for main pk3's and maps
+VOLUME /legacy/server/main
 
 EXPOSE 27960/UDP
 

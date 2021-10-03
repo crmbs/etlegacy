@@ -364,9 +364,9 @@ void CG_GenerateTracemap(void)
 
 	// min is 0
 	// max is 255
-	// etmain REALLY expects 1 to 255, so I'm changing this to
+	// main REALLY expects 1 to 255, so I'm changing this to
 	// generate that instead, so that etpro tracemaps can be used with
-	// etmain
+	// main
 	scalefactor = 254.f / (topdownmax - topdownmin);
 	if (scalefactor == 0.f)
 	{
@@ -717,7 +717,7 @@ qboolean BG_LoadTraceMap(char *rawmapname, vec2_t world_mins, vec2_t world_maxs)
 		}
 		else
 		{
-			// scalefactor 254 to compensate for broken etmain behavior
+			// scalefactor 254 to compensate for broken main behavior
 			scalefactor = 254.f / (ground_max - ground_min);
 		}
 
@@ -741,7 +741,7 @@ qboolean BG_LoadTraceMap(char *rawmapname, vec2_t world_mins, vec2_t world_maxs)
 		}
 		else
 		{
-			// scalefactor 254 to compensate for broken etmain behavior
+			// scalefactor 254 to compensate for broken main behavior
 			scalefactor = 254.f / (skyground_max - skyground_min);
 		}
 
@@ -765,7 +765,7 @@ qboolean BG_LoadTraceMap(char *rawmapname, vec2_t world_mins, vec2_t world_maxs)
 		}
 		else
 		{
-			// scalefactor 254 to compensate for broken etmain behavior
+			// scalefactor 254 to compensate for broken main behavior
 			scalefactor = 254.f / (sky_max - sky_min);
 		}
 

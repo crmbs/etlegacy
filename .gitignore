@@ -8,8 +8,9 @@
 /Makefile
 /*.make
 CMakeLists.txt.user
-etmain/ui/git_version.h
+main/ui/git_version.h
 /main
+/misc/main
 
 #
 # OS specific

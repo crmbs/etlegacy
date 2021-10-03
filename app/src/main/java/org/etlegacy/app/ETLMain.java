@@ -131,9 +131,9 @@ public class ETLMain extends Activity {
         }
 
         // FIXME:This is ugly
-        final File etl_pak0 = new File(getExternalFilesDir(null), "/etlegacy/etmain/pak0.pk3");
-        final File etl_pak1 = new File(getExternalFilesDir(null), "/etlegacy/etmain/pak1.pk3");
-        final File etl_pak2 = new File(getExternalFilesDir(null), "/etlegacy/etmain/pak2.pk3");
+        final File etl_pak0 = new File(getExternalFilesDir(null), "/etlegacy/main/pak0.pk3");
+        final File etl_pak1 = new File(getExternalFilesDir(null), "/etlegacy/main/pak1.pk3");
+        final File etl_pak2 = new File(getExternalFilesDir(null), "/etlegacy/main/pak2.pk3");
 
         final Intent intent = new Intent(ETLMain.this, ETLActivity.class);
 
@@ -145,7 +145,7 @@ public class ETLMain extends Activity {
             final AsyncHttpClient client = new AsyncHttpClient();
 
             // pak2
-            client.get("https://mirror.etlegacy.com/etmain/pak2.pk3", new FileAsyncHttpResponseHandler(this) {
+            client.get("https://mirror.etlegacy.com/main/pak2.pk3", new FileAsyncHttpResponseHandler(this) {
                 @Override
                 public void onFailure(int statusCode, Header[] headers, Throwable throwable, File file) {
 
@@ -161,7 +161,7 @@ public class ETLMain extends Activity {
                     super.onFinish();
                     if (file.getAbsoluteFile().exists()) {
                         try {
-                            Files.move(file.getAbsoluteFile(), new File(getExternalFilesDir("etlegacy/etmain"), etl_pak2.getName()));
+                            Files.move(file.getAbsoluteFile(), new File(getExternalFilesDir("etlegacy/main"), etl_pak2.getName()));
                             client.cancelAllRequests(true);
                         } catch (IOException e) {
                             e.printStackTrace();
@@ -171,7 +171,7 @@ public class ETLMain extends Activity {
             });
 
             // pak1
-            client.get("https://mirror.etlegacy.com/etmain/pak1.pk3", new FileAsyncHttpResponseHandler(this) {
+            client.get("https://mirror.etlegacy.com/main/pak1.pk3", new FileAsyncHttpResponseHandler(this) {
                 @Override
                 public void onFailure(int statusCode, Header[] headers, Throwable throwable, File file) {
 
@@ -187,7 +187,7 @@ public class ETLMain extends Activity {
                     super.onFinish();
                     if (file.getAbsoluteFile().exists()) {
                         try {
-                            Files.move(file.getAbsoluteFile(), new File(getExternalFilesDir("etlegacy/etmain"), etl_pak1.getName()));
+                            Files.move(file.getAbsoluteFile(), new File(getExternalFilesDir("etlegacy/main"), etl_pak1.getName()));
                             client.cancelAllRequests(true);
                         } catch (IOException e) {
                             e.printStackTrace();
@@ -197,7 +197,7 @@ public class ETLMain extends Activity {
             });
 
             // pak0
-            client.get("https://mirror.etlegacy.com/etmain/pak0.pk3", new FileAsyncHttpResponseHandler(this) {
+            client.get("https://mirror.etlegacy.com/main/pak0.pk3", new FileAsyncHttpResponseHandler(this) {
 
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, File file) {
@@ -222,7 +222,7 @@ public class ETLMain extends Activity {
                     super.onFinish();
                     if (file.getAbsoluteFile().exists()) {
                         try {
-                            Files.move(file.getAbsoluteFile(), new File(getExternalFilesDir("etlegacy/etmain"), etl_pak0.getName()));
+                            Files.move(file.getAbsoluteFile(), new File(getExternalFilesDir("etlegacy/main"), etl_pak0.getName()));
                             client.cancelAllRequests(true);
                             etl_Dialog.dismiss();
                             ETLMain.this.startActivity(intent);

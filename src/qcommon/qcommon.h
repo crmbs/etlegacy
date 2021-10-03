@@ -399,7 +399,7 @@ extern int demo_protocols[];
 #define MIRROR_SERVER_URL "http://mirror.etlegacy.com"  ///< location of the download server
 #endif
 
-#define DOWNLOAD_SERVER_URL MIRROR_SERVER_URL "/etmain"
+#define DOWNLOAD_SERVER_URL MIRROR_SERVER_URL "/main"
 
 #define PORT_MASTER         27950
 #define PORT_MOTD           27951
@@ -739,7 +739,7 @@ issues.
 */
 
 // ET: Legacy specific - used by engine code
-#define BASEGAME        "etmain"
+#define BASEGAME        "main"
 #define DEFAULT_MODGAME MODNAME
 
 /**
@@ -765,7 +765,7 @@ extern modHash modHashes;
 
 /**
  * @def NUM_ID_PAKS
- * @brief number of id paks that will never be autodownloaded from etmain
+ * @brief number of id paks that will never be autodownloaded from main
  */
 #define NUM_ID_PAKS     9
 

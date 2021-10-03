@@ -656,7 +656,7 @@ void PmovePredict(pmove_t *pmove, float frametime);
 #define PC_FIELDOPS             3  ///< bomb stuff
 #define PC_COVERTOPS            4  ///< sneak about ;o
 
-#define NUM_PLAYER_CLASSES      5
+#define NUM_PLAYER_CLASSES      4
 
 // leaning flags..
 #define STAT_LEAN_LEFT          0x00000001

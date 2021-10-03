@@ -110,8 +110,8 @@ calls to FS_AddGameDirectory
 Additionaly, we search in several subdirectories:
 current game is the current mode
 base game is a variable to allow mods based on other mods
-(such as etmain + missionpack content combination in a mod for instance)
-BASEGAME is the hardcoded base game ("etmain")
+(such as main + missionpack content combination in a mod for instance)
+BASEGAME is the hardcoded base game ("main")
 
 e.g. the qpath "sound/newstuff/test.wav" would be searched for in the following places:
 
@@ -212,10 +212,10 @@ typedef struct fileInPack_s
  */
 typedef struct
 {
-	char pakPathname[MAX_OSPATH];               ///< c:\\etlegacy\\etmain
-	char pakFilename[MAX_OSPATH];               ///< c:\\etlegacy\\etmain\\pak0.pk3
+	char pakPathname[MAX_OSPATH];               ///< c:\\etlegacy\\main
+	char pakFilename[MAX_OSPATH];               ///< c:\\etlegacy\\main\\pak0.pk3
 	char pakBasename[MAX_OSPATH];               ///< pak0
-	char pakGamename[MAX_OSPATH];               ///< etmain
+	char pakGamename[MAX_OSPATH];               ///< main
 	unzFile handle;                             ///< handle to zip file
 	int checksum;                               ///< regular checksum
 	int pure_checksum;                          ///< checksum for pure
@@ -233,8 +233,8 @@ typedef struct
 typedef struct
 {
 	char path[MAX_OSPATH];          ///< c:\\etlegacy
-	char fullpath[MAX_OSPATH];      ///< c:\\etlegacy\\etmain
-	char gamedir[MAX_OSPATH];       ///< etmain
+	char fullpath[MAX_OSPATH];      ///< c:\\etlegacy\\main
+	char gamedir[MAX_OSPATH];       ///< main
 } directory_t;
 
 /**
@@ -3240,7 +3240,7 @@ static char **Sys_ConcatenateFileLists(char **list0, char **list1, char **list2)
 }
 
 /**
- * @brief A mod directory is a peer to etmain with a pk3 in it
+ * @brief A mod directory is a peer to main with a pk3 in it
  * The directories are searched in base path and home path
  * @param listbuf
  * @param bufsize
@@ -3293,7 +3293,7 @@ int FS_GetModList(char *listbuf, int bufsize)
 			continue;
 		}
 
-		// we drop "etmain" "." and ".."
+		// we drop "main" "." and ".."
 		if (Q_stricmp(name, BASEGAME) && Q_stricmpn(name, ".", 1))
 		{
 			// now we need to find some .pk3 files to validate the mod
@@ -3870,8 +3870,8 @@ void FS_AddGameDirectory(const char *path, const char *dir)
 			search      = Z_Malloc(sizeof(searchpath_t));
 			search->dir = Z_Malloc(sizeof(*search->dir));
 
-			Q_strncpyz(search->dir->path, curpath, sizeof(search->dir->path));  // c:\etlegacy\etmain
-			Q_strncpyz(search->dir->fullpath, pakfile, sizeof(search->dir->fullpath));  // c:\etlegacy\etmain\mypak.pk3dir
+			Q_strncpyz(search->dir->path, curpath, sizeof(search->dir->path));  // c:\etlegacy\main
+			Q_strncpyz(search->dir->fullpath, pakfile, sizeof(search->dir->fullpath));  // c:\etlegacy\main\mypak.pk3dir
 			Q_strncpyz(search->dir->gamedir, pakdirs[pakdirsi], sizeof(search->dir->gamedir)); // mypak.pk3dir
 
 			search->next   = fs_searchpaths;
@@ -4603,7 +4603,7 @@ const char *FS_ReferencedPakNames(void)
 	info[0] = 0;
 
 	// we want to return ALL pk3's from the fs_game path
-	// and referenced one's from etmain
+	// and referenced one's from main
 	for (search = fs_searchpaths ; search ; search = search->next)
 	{
 		// is the element a pak file?
@@ -4918,7 +4918,7 @@ static void FS_CheckRequiredFiles(int checksumFeed)
 			Com_Error(ERR_DROP, "Invalid game folder");
 		}
 
-		Com_Error(ERR_FATAL, "FS_InitFilesystem: Original game data files not found.\n\nPlease copy pak0.pk3 from the 'etmain' path of your Wolfenstein: Enemy Territory installation to:\n\n\"%s%c%s\"\n\n",
+		Com_Error(ERR_FATAL, "FS_InitFilesystem: Original game data files not found.\n\nPlease copy pak0.pk3 from the 'main' path of your Wolfenstein: Enemy Territory installation to:\n\n\"%s%c%s\"\n\n",
 		          Cvar_VariableString("fs_basepath"), PATH_SEP, BASEGAME);
 	}
 }
@@ -4950,7 +4950,7 @@ void FS_InitFilesystem(void)
 		tmp_fs_game         = Cvar_Get("fs_game", "", 0);
 		tmp_fs_game->flags |= CVAR_USER_CREATED; // deal as startup var
 
-		Com_Printf("INFO: fs_game now defaults to '%s' mod instead of 'etmain'\n", tmp_fs_game->string);
+		Com_Printf("INFO: fs_game now defaults to '%s' mod instead of 'main'\n", tmp_fs_game->string);
 	}
 
 	FS_CalcModHashes();
