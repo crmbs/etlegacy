@@ -41,7 +41,7 @@
 static soundScript_t *hashTable[FILE_HASH_SIZE];
 #define generateHashValue(fname) Q_GenerateHashValue(fname, FILE_HASH_SIZE, qfalse, qtrue)
 
-#define MAX_SOUND_SCRIPTS       1024 // decreased from 4096  - we never reach more than 500 sounds
+#define MAX_SOUND_SCRIPTS       2048 // decreased from 4096  - we never reach more than 500 sounds
 static soundScript_t soundScripts[MAX_SOUND_SCRIPTS];
 int                  numSoundScripts = 0;
 
