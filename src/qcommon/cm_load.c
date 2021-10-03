@@ -495,7 +495,7 @@ qboolean CMod_LoadCustomEntityString(lump_t *l, const char* name) {
  * @brief CMod_LoadEntityString
  * @param[in] l
  */
-void CMod_LoadEntityString(lump_t *l)
+void CMod_LoadEntityString(lump_t *l, const char* name)
 {
 	if (CMod_LoadCustomEntityString(l, name))
 	{
