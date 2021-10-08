@@ -1416,35 +1416,38 @@ void G_Damage(gentity_t *targ, gentity_t *inflictor, gentity_t *attacker, vec3_t
 			take *= 2; // sniper rifles can do full-kill (and knock into limbo)
 
 		}
-		if (dflags & DAMAGE_DISTANCEFALLOFF)
-		{
-			vec_t dist;
-			float scale;
 
-			dist = VectorDistance(point, muzzleTrace);
+		// rtcw - remove damage falloff
+		// if (dflags & DAMAGE_DISTANCEFALLOFF)
+		// {
+		// 	vec_t dist;
+		// 	float scale;
 
-			// start at 100% at 1500 units (and before),
-			// and go to 20% at 2500 units (and after)
+		// 	dist = VectorDistance(point, muzzleTrace);
 
-			// 1500 to 2500 -> 0.0 to 1.0
-			scale = (dist - 1500.f) / (2500.f - 1500.f);
-			// 0.0 to 1.0 -> 0.0 to 0.8
-			scale *= 0.8f;
-			// 0.0 to 0.8 -> 1.0 to 0.2
-			scale = 1.0f - scale;
+		// 	// start at 100% at 1500 units (and before),
+		// 	// and go to 20% at 2500 units (and after)
 
-			// And, finally, cap it.
-			if (scale > 1.0f)
-			{
-				scale = 1.0f;
-			}
-			else if (scale < 0.2f)
-			{
-				scale = 0.2f;
-			}
+		// 	// 1500 to 2500 -> 0.0 to 1.0
+		// 	scale = (dist - 1500.f) / (2500.f - 1500.f);
+		// 	// 0.0 to 1.0 -> 0.0 to 0.8
+		// 	scale *= 0.8f;
+		// 	// 0.0 to 0.8 -> 1.0 to 0.2
+		// 	scale = 1.0f - scale;
 
-			take *= scale;
-		}
+		// 	// And, finally, cap it.
+		// 	if (scale > 1.0f)
+		// 	{
+		// 		scale = 1.0f;
+		// 	}
+		// 	else if (scale < 0.2f)
+		// 	{
+		// 		scale = 0.2f;
+		// 	}
+
+		// 	take *= scale;
+		// }
+		// rtcw - remove damage falloff
 
 		if (!(targ->client->ps.eFlags & EF_HEADSHOT))          // only toss hat on first headshot
 		{
