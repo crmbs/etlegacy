@@ -1905,13 +1905,59 @@ static void CG_RegisterGraphics(void)
 	CG_LoadingString(" - weapons -");
 	for (i = WP_KNIFE; i < WP_NUM_WEAPONS; i++)
 	{
-		CG_RegisterWeapon(i, qfalse);
+		switch (i) {
+			// do not register these weapons
+			case WP_KAR98:
+			case WP_CARBINE: 
+			case WP_LANDMINE:
+			case WP_SATCHEL:
+			case WP_SATCHEL_DET:
+			case WP_MOBILE_MG42:
+			case WP_K43:
+			case WP_MORTAR:
+			case WP_GPG40:
+			case WP_M7:
+			case WP_K43_SCOPE:
+			case WP_MOBILE_MG42_SET:
+			case WP_KNIFE_KABAR:
+			case WP_MOBILE_BROWNING:
+			case WP_MOBILE_BROWNING_SET:
+			case WP_MORTAR2:
+			case WP_MORTAR2_SET:
+			case WP_MP34:
+				break;
+			default:
+				CG_RegisterWeapon(i, qfalse);
+		}		
 	}
 
 	CG_LoadingString(" - items -");
 	for (i = 1 ; i < ITEM_MAX_ITEMS ; i++)
 	{
-		CG_RegisterItemVisuals(i);
+		switch (i) {
+			// do not register these weapons
+			case WP_KAR98:
+			case WP_CARBINE: 
+			case WP_LANDMINE:
+			case WP_SATCHEL:
+			case WP_SATCHEL_DET:
+			case WP_MOBILE_MG42:
+			case WP_K43:
+			case WP_MORTAR:
+			case WP_GPG40:
+			case WP_M7:
+			case WP_K43_SCOPE:
+			case WP_MOBILE_MG42_SET:
+			case WP_KNIFE_KABAR:
+			case WP_MOBILE_BROWNING:
+			case WP_MOBILE_BROWNING_SET:
+			case WP_MORTAR2:
+			case WP_MORTAR2_SET:
+			case WP_MP34:
+				break;
+			default:
+				CG_RegisterItemVisuals(i);
+		}
 	}
 
 	// cgs.media.grenadeExplosionShader = trap_R_RegisterShader("grenadeExplosion"); // unused FIXME: remove from shader def
