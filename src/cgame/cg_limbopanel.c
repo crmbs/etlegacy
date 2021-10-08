@@ -2180,7 +2180,9 @@ void CG_DrawPlayerHead(rectDef_t *rect, bg_character_t *character, bg_character_
 		head.renderfx |= /*RF_LIGHTING_ORIGIN |*/ RF_MINLIGHT;
 	}
 
-	CG_HudHeadAnimation(headcharacter, &cg.predictedPlayerEntity.pe.hudhead, &head.oldframe, &head.frame, &head.backlerp, animation);
+	// rtcw - remove hud head animation
+	// CG_HudHeadAnimation(headcharacter, &cg.predictedPlayerEntity.pe.hudhead, &head.oldframe, &head.frame, &head.backlerp, animation);
+	// rtcw - remove hud head animation
 
 	if (drawHat)
 	{
