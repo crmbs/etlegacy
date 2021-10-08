@@ -1436,7 +1436,7 @@ void Menu_PaintAll(void)
 	if (debugMode)
 	{
 		vec4_t v = { 1, 1, 1, 1 };
-		DC->textFont(UI_FONT_COURBD_21);
+		DC->textFont(UI_FONT_FONT2_21);
 		DC->drawText(5, 10, .2f, v, va("fps: %.2f", (double)DC->FPS), 0, 0, 0);
 		DC->drawText(5, 20, .2f, v, va("mouse: %i %i", DC->cursorx, DC->cursory), 0, 0, 0);
 	}

@@ -176,8 +176,8 @@ void UI_DrawLoadPanel(qboolean ownerdraw, qboolean uihack)
 
 	if (!bg_loadscreeninited)
 	{
-		RegisterFont("ariblk", 27, &uiInfo.uiDC.Assets.bg_loadscreenfont1);
-		RegisterFont("courbd", 30, &uiInfo.uiDC.Assets.bg_loadscreenfont2);
+		RegisterFont("font1", 27, &uiInfo.uiDC.Assets.bg_loadscreenfont1);
+		RegisterFont("font2", 30, &uiInfo.uiDC.Assets.bg_loadscreenfont2);
 
 		BG_PanelButtonsSetup(loadpanelButtons);
 		C_PanelButtonsSetup(loadpanelButtons, Cui_WideXoffset());   // convert to possible widescreen coordinates..

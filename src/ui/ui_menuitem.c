@@ -43,7 +43,7 @@
 void Item_Tooltip_Initialize(itemDef_t *item)
 {
 	item->text              = NULL;
-	item->font              = UI_FONT_COURBD_21;
+	item->font              = UI_FONT_FONT2_21;
 	item->textalignx        = 3;
 	item->textaligny        = 10;
 	item->textscale         = .2f;
