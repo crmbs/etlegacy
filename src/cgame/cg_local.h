@@ -1795,7 +1795,10 @@ typedef struct
 
 	// hitsounds
 	sfxHandle_t headShot;
-	sfxHandle_t bodyShot;
+	// rtcw - add multiple body hit sounds
+	// sfxHandle_t bodyShot;
+	sfxHandle_t bodyShot[BODYSHOTSOUND_MAX][3];
+	// rtcw - add multiple body hit sounds
 	sfxHandle_t teamShot;
 
 	sfxHandle_t grenadePulseSound[4];

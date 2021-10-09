@@ -2164,6 +2164,16 @@ typedef enum
 } brassSound_t;
 
 /**
+ * @enum bodyShotSound_t
+ * @brief
+ */
+typedef enum
+{
+	BODYSHOTSOUND_HIT = 0,
+	BODYSHOTSOUND_MAX,
+} bodyShotSound_t;
+
+/**
  * @enum fxType_t
  * @brief
  */
