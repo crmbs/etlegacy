@@ -552,10 +552,12 @@ qboolean CG_RegisterCharacter(const char *characterFile, bg_character_t *charact
 			CG_Printf(S_COLOR_YELLOW "WARNING: failed to register hud head skin '%s' referenced from '%s'\n", characterDef.hudheadskin, characterFile);
 		}
 
-		if (!CG_ParseHudHeadConfig(characterDef.hudheadanims, character->hudheadanimations))
-		{
-			CG_Printf(S_COLOR_YELLOW "WARNING: failed to register hud head animations '%s' referenced from '%s'\n", characterDef.hudheadanims, characterFile);
-		}
+		// rtcw - remove hud head animations
+		// if (!CG_ParseHudHeadConfig(characterDef.hudheadanims, character->hudheadanimations))
+		// {
+		// 	CG_Printf(S_COLOR_YELLOW "WARNING: failed to register hud head animations '%s' referenced from '%s'\n", characterDef.hudheadanims, characterFile);
+		// }
+		// rtcw - remove hud head animations
 	}
 	else
 	{
