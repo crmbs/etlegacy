@@ -103,11 +103,13 @@ void G_BounceMissile(gentity_t *ent, trace_t *trace)
 			VectorScale(ent->s.pos.trDelta, 0.65f, ent->s.pos.trDelta);
 		}
 
+		// rtcw - bouncy grenades
 		// grenades on movers get scaled back much earlier
-		if (ent->s.groundEntityNum != ENTITYNUM_WORLD)
-		{
-			VectorScale(ent->s.pos.trDelta, 0.5f, ent->s.pos.trDelta);
-		}
+		// if (ent->s.groundEntityNum != ENTITYNUM_WORLD)
+		// {
+		// 	VectorScale(ent->s.pos.trDelta, 0.5f, ent->s.pos.trDelta);
+		// }
+		// rtcw - bouncy grenades
 
 		// calculate relative delta for stop calcs
 		// FIXME: this condition is always true due to || 1 ... why ?
