@@ -142,7 +142,6 @@ bg_playerclass_t bg_playerClasses[2][NUM_PLAYER_CLASSES] =
 			{ WP_KNIFE,                SK_LIGHT_WEAPONS,                            0, 1,   0   },
 			{
 				{ WP_STEN,                 SK_LIGHT_WEAPONS,                            0, 64,  32  }, // covert-ops start with x2 ammo
-				{ WP_FG42,                 SK_LIGHT_WEAPONS,                            0, 40,  20  },
 				{ WP_GARAND,               SK_MILITARY_INTELLIGENCE_AND_SCOPED_WEAPONS, 0, 10,  10  },
 			},
 			{
@@ -266,8 +265,7 @@ bg_playerclass_t bg_playerClasses[2][NUM_PLAYER_CLASSES] =
 			{ WP_KNIFE,                SK_LIGHT_WEAPONS,                            0, 1,   0   },
 			{
 				{ WP_STEN,                 SK_LIGHT_WEAPONS,                            0, 64,  32  }, // covert-ops start with x2 ammo
-				{ WP_FG42,                 SK_LIGHT_WEAPONS,                            0, 40,  20  },
-				{ WP_GARAND,               SK_MILITARY_INTELLIGENCE_AND_SCOPED_WEAPONS, 0, 20,  10  },
+				{ WP_GARAND,               SK_MILITARY_INTELLIGENCE_AND_SCOPED_WEAPONS, 0, 10,  10  },
 			},
 			{
 				{ WP_SILENCER,             SK_LIGHT_WEAPONS,                            0, 24,  8   },
