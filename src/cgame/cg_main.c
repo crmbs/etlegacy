@@ -1501,8 +1501,16 @@ static void CG_RegisterSounds(void)
 	cgs.media.sndRankUp  = trap_S_RegisterSound("sound/misc/rank_up.wav", qfalse);
 	cgs.media.sndSkillUp = trap_S_RegisterSound("sound/misc/skill_up.wav", qfalse);
 
-	cgs.media.sndMedicCall[0] = trap_S_RegisterSound("sound/chat/axis/medic.wav", qfalse);
-	cgs.media.sndMedicCall[1] = trap_S_RegisterSound("sound/chat/allies/medic.wav", qfalse);
+	// rtcw - enable random medic calls
+	// cgs.media.sndMedicCall[0] = trap_S_RegisterSound("sound/chat/axis/medic.wav", qfalse);
+	// cgs.media.sndMedicCall[1] = trap_S_RegisterSound("sound/chat/allies/medic.wav", qfalse);
+	
+	cgs.media.sndMedicCallAllies[0] = trap_S_RegisterSound("sound/multiplayer/allies/a-medic2.wav", qfalse);
+	cgs.media.sndMedicCallAllies[1] = trap_S_RegisterSound("sound/multiplayer/allies/a-medic3.wav", qfalse);
+
+	cgs.media.sndMedicCallAxis[0] = trap_S_RegisterSound("sound/multiplayer/axis/g-medic2.wav", qfalse);
+	cgs.media.sndMedicCallAxis[1] = trap_S_RegisterSound("sound/multiplayer/axis/g-medic3.wav", qfalse);
+	// rtcw - enable random medic calls
 
 	cgs.media.shoveSound = trap_S_RegisterSound("sound/weapons/impact/flesh1.wav", qfalse);
 

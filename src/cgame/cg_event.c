@@ -2848,10 +2848,28 @@ void CG_EntityEvent(centity_t *cent, vec3_t position)
 //        case TEAM_SPECTATOR:
 //        case TEAM_NUM_TEAMS:
 		case TEAM_AXIS:
-			trap_S_StartSound(NULL, cent->currentState.number, CHAN_AUTO, cgs.media.sndMedicCall[0]);
+			// rtcw - enable random medic call
+			// trap_S_StartSound(NULL, cent->currentState.number, CHAN_AUTO, cgs.media.sndMedicCall[0]);
+			if ( random() > 0.5 ) 
+			{
+				trap_S_StartSound(NULL, cent->currentState.number, CHAN_AUTO, cgs.media.sndMedicCallAxis[1]);
+			} else 
+			{
+				trap_S_StartSound(NULL, cent->currentState.number, CHAN_AUTO, cgs.media.sndMedicCallAxis[0]);
+			}	
+			// rtcw - enable random medic call
 			break;
 		case TEAM_ALLIES:
-			trap_S_StartSound(NULL, cent->currentState.number, CHAN_AUTO, cgs.media.sndMedicCall[1]);
+			// rtcw - enable random medic call
+			// trap_S_StartSound(NULL, cent->currentState.number, CHAN_AUTO, cgs.media.sndMedicCall[1]);
+			if ( random() > 0.5 ) 
+			{
+				trap_S_StartSound(NULL, cent->currentState.number, CHAN_AUTO, cgs.media.sndMedicCallAllies[0]);
+			} else 
+			{
+				trap_S_StartSound(NULL, cent->currentState.number, CHAN_AUTO, cgs.media.sndMedicCallAllies[1]);
+			}	
+			// rtcw - enable random medic call
 			break;
 		default:     // shouldn't happen
 			break;
