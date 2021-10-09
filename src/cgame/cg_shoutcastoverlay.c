@@ -86,7 +86,9 @@ int players[12];
 */
 void CG_DrawMinimap(void)
 {
-	CG_DrawAutoMapNew(MINIMAP_X, MINIMAP_Y, MINIMAP_WIDTH, MINIMAP_HEIGHT);
+	// rtcw - remove command map
+	// CG_DrawAutoMapNew(MINIMAP_X, MINIMAP_Y, MINIMAP_WIDTH, MINIMAP_HEIGHT);
+	// rtcw - remove command map
 }
 
 /**

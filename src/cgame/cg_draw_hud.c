@@ -2118,52 +2118,58 @@ static void CG_DrawNewCompass(rectDef_t location)
 		snap = cg.snap;
 	}
 
-	if (snap->ps.pm_flags & PMF_LIMBO /*|| snap->ps.persistant[PERS_TEAM] == TEAM_SPECTATOR*/
-#ifdef FEATURE_MULTIVIEW
-	    || cg.mvTotalClients > 0
-#endif
-	    )
-	{
-		CG_DrawExpandedAutoMap();
-		return;
-	}
+	// rtcw - remove command map
+// 	if (snap->ps.pm_flags & PMF_LIMBO /*|| snap->ps.persistant[PERS_TEAM] == TEAM_SPECTATOR*/
+// #ifdef FEATURE_MULTIVIEW
+// 	    || cg.mvTotalClients > 0
+// #endif
+// 	    )
+// 	{
+// 		CG_DrawExpandedAutoMap();
+// 		return;
+// 	}
+	// rtcw - remove command map
 
 	diff = basew * 0.25f;
 
-	if (!cg_altHud.integer)
-	{
-		if (cgs.autoMapExpanded)
-		{
-			if (cg.time - cgs.autoMapExpandTime < 100.f)
-			{
-				CG_CompasMoveLocation(&basex, &basey, qtrue);
-			}
-			else
-			{
-				CG_DrawExpandedAutoMap();
-				return;
-			}
-		}
-		else
-		{
-			if (cg.time - cgs.autoMapExpandTime <= 150.f)
-			{
-				CG_DrawExpandedAutoMap();
-				return;
-			}
-			else if ((cg.time - cgs.autoMapExpandTime > 150.f) && (cg.time - cgs.autoMapExpandTime < 250.f))
-			{
-				CG_CompasMoveLocation(&basex, &basey, qfalse);
-			}
-		}
-	}
+	// rtcw - remove command map
+	// if (!cg_altHud.integer)
+	// {
+	// 	if (cgs.autoMapExpanded)
+	// 	{
+	// 		if (cg.time - cgs.autoMapExpandTime < 100.f)
+	// 		{
+	// 			CG_CompasMoveLocation(&basex, &basey, qtrue);
+	// 		}
+	// 		else
+	// 		{
+	// 			CG_DrawExpandedAutoMap();
+	// 			return;
+	// 		}
+	// 	}
+	// 	else
+	// 	{
+	// 		if (cg.time - cgs.autoMapExpandTime <= 150.f)
+	// 		{
+	// 			CG_DrawExpandedAutoMap();
+	// 			return;
+	// 		}
+	// 		else if ((cg.time - cgs.autoMapExpandTime > 150.f) && (cg.time - cgs.autoMapExpandTime < 250.f))
+	// 		{
+	// 			CG_CompasMoveLocation(&basex, &basey, qfalse);
+	// 		}
+	// 	}
+	// }
+	// rtcw - remove command map
 
 	if ((snap->ps.persistant[PERS_TEAM] == TEAM_SPECTATOR && !cgs.clientinfo[cg.clientNum].shoutcaster) || !cg_drawCompass.integer)
 	{
 		return;
 	}
 
-	CG_DrawAutoMap(basex + (diff / 2), basey + (diff / 2), basew - diff, baseh - diff);
+	// rtcw - remove command map
+	// CG_DrawAutoMap(basex + (diff / 2), basey + (diff / 2), basew - diff, baseh - diff);
+	// rtcw - remove command map
 	CG_DrawPic(basex + 4, basey + 4, basew - 8, baseh - 8, cgs.media.compassShader);
 
 	angle       = (cg.predictedPlayerState.viewangles[YAW] + 180.f) / 360.f - (0.125f);
