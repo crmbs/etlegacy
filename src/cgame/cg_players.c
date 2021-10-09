@@ -3079,7 +3079,9 @@ void CG_Player(centity_t *cent)
 			anim = HD_IDLE1;
 		}
 
-		CG_HudHeadAnimation(character, &cent->pe.head, &head.oldframe, &head.frame, &head.backlerp, anim);
+		// rtcw - remove hud head animation
+		// CG_HudHeadAnimation(character, &cent->pe.head, &head.oldframe, &head.frame, &head.backlerp, anim);
+		// rtcw - remove hud head animation
 	}
 	else
 	{
