@@ -513,28 +513,30 @@ qboolean CG_RegisterCharacter(const char *characterFile, bg_character_t *charact
 	COM_StripExtension(characterDef.mesh, buf, sizeof(buf));
 	CG_ParseGibModels(buf, character); // it is here so we can use modelpath from above
 
+	// rtcw - remove undressed corpses
 	// register undressed corpse media
-	if (*characterDef.undressedCorpseModel)
-	{
-		// register undressed corpse model
-		if (!(character->undressedCorpseModel = trap_R_RegisterModel(characterDef.undressedCorpseModel)))
-		{
-			CG_Printf(S_COLOR_YELLOW "WARNING: failed to register undressed corpse model '%s' referenced from '%s'\n", characterDef.undressedCorpseModel, characterFile);
-		}
+	// if (*characterDef.undressedCorpseModel)
+	// {
+	// 	// register undressed corpse model
+	// 	if (!(character->undressedCorpseModel = trap_R_RegisterModel(characterDef.undressedCorpseModel)))
+	// 	{
+	// 		CG_Printf(S_COLOR_YELLOW "WARNING: failed to register undressed corpse model '%s' referenced from '%s'\n", characterDef.undressedCorpseModel, characterFile);
+	// 	}
 
-		// register undressed corpse skin
-		COM_StripExtension(characterDef.undressedCorpseModel, buf, sizeof(buf));
-		filename = va("%s_%s.skin", buf, characterDef.undressedCorpseSkin);
+	// 	// register undressed corpse skin
+	// 	COM_StripExtension(characterDef.undressedCorpseModel, buf, sizeof(buf));
+	// 	filename = va("%s_%s.skin", buf, characterDef.undressedCorpseSkin);
 
-		if (!(character->undressedCorpseSkin = trap_R_RegisterSkin(filename)))
-		{
-			CG_Printf(S_COLOR_YELLOW "WARNING: failed to register undressed corpse skin '%s' referenced from '%s'\n", filename, characterFile);
-		}
-	}
-	else
-	{
-		CG_Printf(S_COLOR_YELLOW "WARNING: no undressed coprse model definition in '%s'\n", characterFile);
-	}
+	// 	if (!(character->undressedCorpseSkin = trap_R_RegisterSkin(filename)))
+	// 	{
+	// 		CG_Printf(S_COLOR_YELLOW "WARNING: failed to register undressed corpse skin '%s' referenced from '%s'\n", filename, characterFile);
+	// 	}
+	// }
+	// else
+	// {
+	// 	CG_Printf(S_COLOR_YELLOW "WARNING: no undressed coprse model definition in '%s'\n", characterFile);
+	// }
+	// rtcw - remove undressed corpses
 
 	// register the head for the hud
 	if (*characterDef.hudhead)
