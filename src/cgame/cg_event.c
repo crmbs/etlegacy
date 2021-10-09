@@ -471,7 +471,7 @@ static fxSound_t fxSounds[FXTYPE_MAX] =
 	// metal
 	{ 1, { -1, -1, -1 }, { "sound/world/metalbreak.wav",  NULL,                          NULL                          } },
 	// gibs
-	{ 1, { -1, -1, -1 }, { "sound/player/gibsplit1.wav",  NULL,                          NULL                          } }, // "sound/world/gibsplit1.wav"
+	{ 1, { -1, -1, -1 }, { "sound/player/gibsplt1.wav",   NULL,                          NULL                          } }, // "sound/world/gibsplit1.wav"
 	// brick
 	{ 1, { -1, -1, -1 }, { "sound/world/brickfall.wav",   NULL,                          NULL                          } },
 	// stone
