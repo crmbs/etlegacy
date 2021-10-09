@@ -1450,7 +1450,16 @@ static void CG_RegisterSounds(void)
 	cgs.media.goatAxis     = trap_S_RegisterSound("sound/osp/goat.wav", qfalse);
 
 	cgs.media.headShot = trap_S_RegisterSound("sound/hitsounds/hithead.wav", qfalse);
-	cgs.media.bodyShot = trap_S_RegisterSound("sound/hitsounds/hit.wav", qfalse);
+	
+	// rtcw - add multiple body hit sounds
+	// cgs.media.bodyShot = trap_S_RegisterSound("sound/hitsounds/hit.wav", qfalse);
+	for (i = 0; i < 3; i++)
+	{
+		Com_sprintf(name, sizeof(name), "sound/hitsounds/hit%i.wav", i + 1);
+		cgs.media.bodyShot[BODYSHOTSOUND_HIT][i] = trap_S_RegisterSound(name, qfalse);
+	}
+	// rtcw - add multiple body hit sounds
+
 	cgs.media.teamShot = trap_S_RegisterSound("sound/hitsounds/hitteam.wav", qfalse);
 
 	cgs.media.flameSound       = trap_S_RegisterSound("sound/weapons/flamethrower/flame_burn.wav", qfalse);
@@ -1662,9 +1671,11 @@ static void CG_RegisterGraphics(void)
 	cgs.media.reviveHintShader        = trap_R_RegisterShader("gfx/2d/reviveHint");
 	cgs.media.dynamiteHintShader      = trap_R_RegisterShader("gfx/2d/dynamiteHint");
 	cgs.media.tankHintShader          = trap_R_RegisterShaderNoMip("gfx/2d/tankHint");
-	cgs.media.satchelchargeHintShader = trap_R_RegisterShaderNoMip("gfx/2d/satchelchargeHint");
-	cgs.media.landmineHintShader      = trap_R_RegisterShaderNoMip("gfx/2d/landmineHint");
-	cgs.media.uniformHintShader       = trap_R_RegisterShaderNoMip("gfx/2d/uniformHint");
+	// rtcw - remove unused hints
+	// cgs.media.satchelchargeHintShader = trap_R_RegisterShaderNoMip("gfx/2d/satchelchargeHint");
+	// cgs.media.landmineHintShader      = trap_R_RegisterShaderNoMip("gfx/2d/landmineHint");
+	// cgs.media.uniformHintShader       = trap_R_RegisterShaderNoMip("gfx/2d/uniformHint");
+	// rtcw - remove unused hints
 
 	if (cgs.ccLayers)
 	{
@@ -1685,11 +1696,13 @@ static void CG_RegisterGraphics(void)
 	cgs.media.commandCentreAutomapBorderShader  = trap_R_RegisterShaderNoMip("ui/assets2/maptrim_long");
 	cgs.media.commandCentreAutomapBorder2Shader = trap_R_RegisterShaderNoMip("ui/assets2/maptrim_long2");
 	cgs.media.commandCentreAutomapCornerShader  = trap_R_RegisterShaderNoMip("ui/assets2/maptrim_edge.tga");
-	cgs.media.commandCentreAxisMineShader       = trap_R_RegisterShaderNoMip("sprites/landmine_axis");
-	cgs.media.commandCentreAlliedMineShader     = trap_R_RegisterShaderNoMip("sprites/landmine_allied");
-	cgs.media.commandCentreSpawnShader[0]       = trap_R_RegisterShaderNoMip("gfx/limbo/cm_flagaxis");
-	cgs.media.commandCentreSpawnShader[1]       = trap_R_RegisterShaderNoMip("gfx/limbo/cm_flagallied");
-	cgs.media.compassConstructShader            = trap_R_RegisterShaderNoMip("sprites/construct.tga");
+	// rtcw - remove command map
+	// cgs.media.commandCentreAxisMineShader       = trap_R_RegisterShaderNoMip("sprites/landmine_axis");
+	// cgs.media.commandCentreAlliedMineShader     = trap_R_RegisterShaderNoMip("sprites/landmine_allied");
+	// cgs.media.commandCentreSpawnShader[0]       = trap_R_RegisterShaderNoMip("gfx/limbo/cm_flagaxis");
+	// cgs.media.commandCentreSpawnShader[1]       = trap_R_RegisterShaderNoMip("gfx/limbo/cm_flagallied");
+	// cgs.media.compassConstructShader            = trap_R_RegisterShaderNoMip("sprites/construct.tga");
+	// rtcw - remove command map
 	cgs.media.blackmask                         = trap_R_RegisterShaderNoMip("images/blackmask"); // etpro icons support
 
 	cgs.media.countryFlags = trap_R_RegisterShaderNoMip("gfx/flags/world_flags");
@@ -1800,8 +1813,10 @@ static void CG_RegisterGraphics(void)
 	cgs.media.genericConstructionShader = trap_R_RegisterShader("textures/sfx/construction");
 	cgs.media.shoutcastLandmineShader   = trap_R_RegisterShader("textures/sfx/shoutcast_landmine");
 
-	cgs.media.alliedUniformShader = trap_R_RegisterShader("sprites/uniform_allied");
-	cgs.media.axisUniformShader   = trap_R_RegisterShader("sprites/uniform_axis");
+	// rtcw - remove stealing uniforms
+	// cgs.media.alliedUniformShader = trap_R_RegisterShader("sprites/uniform_allied");
+	// cgs.media.axisUniformShader   = trap_R_RegisterShader("sprites/uniform_axis");
+	// rtcw - remove stealing uniforms
 
 	// used in: command map
 	cgs.media.ccFilterPics[0] = trap_R_RegisterShaderNoMip("gfx/limbo/filter_axis");
@@ -2189,10 +2204,12 @@ static void CG_RegisterGraphics(void)
 
 	cgs.media.cursorIcon = trap_R_RegisterShaderNoMip("ui/assets/3_cursor3");
 
-	cgs.media.hudDamagedStates[0] = trap_R_RegisterSkin("models/players/hud/damagedskins/blood01.skin");
-	cgs.media.hudDamagedStates[1] = trap_R_RegisterSkin("models/players/hud/damagedskins/blood02.skin");
-	cgs.media.hudDamagedStates[2] = trap_R_RegisterSkin("models/players/hud/damagedskins/blood03.skin");
-	cgs.media.hudDamagedStates[3] = trap_R_RegisterSkin("models/players/hud/damagedskins/blood04.skin");
+	// rtcw - remove damaged skins
+	// cgs.media.hudDamagedStates[0] = trap_R_RegisterSkin("models/players/hud/damagedskins/blood01.skin");
+	// cgs.media.hudDamagedStates[1] = trap_R_RegisterSkin("models/players/hud/damagedskins/blood02.skin");
+	// cgs.media.hudDamagedStates[2] = trap_R_RegisterSkin("models/players/hud/damagedskins/blood03.skin");
+	// cgs.media.hudDamagedStates[3] = trap_R_RegisterSkin("models/players/hud/damagedskins/blood04.skin");
+	// rtcw - remove damaged skins
 
 	cgs.media.axisFlag       = trap_R_RegisterShaderNoMip("gfx/limbo/flag_axis");
 	cgs.media.alliedFlag     = trap_R_RegisterShaderNoMip("gfx/limbo/flag_allied");
