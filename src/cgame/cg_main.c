@@ -1467,10 +1467,11 @@ static void CG_RegisterSounds(void)
 	cgs.media.flameStartSound  = trap_S_RegisterSound("sound/weapons/flamethrower/flame_up.wav", qfalse);
 	cgs.media.flameStreamSound = trap_S_RegisterSound("sound/weapons/flamethrower/flame_fire.wav", qfalse);
 
-	cgs.media.grenadePulseSound[0] = trap_S_RegisterSound("sound/weapons/grenade/gren_timer1.wav", qfalse);
-	cgs.media.grenadePulseSound[1] = trap_S_RegisterSound("sound/weapons/grenade/gren_timer2.wav", qfalse);
-	cgs.media.grenadePulseSound[2] = trap_S_RegisterSound("sound/weapons/grenade/gren_timer3.wav", qfalse);
-	cgs.media.grenadePulseSound[3] = trap_S_RegisterSound("sound/weapons/grenade/gren_timer4.wav", qfalse);
+	cgs.media.grenadePulseSound[0] = trap_S_RegisterSound("sound/weapons/grenade/grenpulse1.wav", qfalse);
+	cgs.media.grenadePulseSound[1] = trap_S_RegisterSound("sound/weapons/grenade/grenpulse2.wav", qfalse);
+	cgs.media.grenadePulseSound[2] = trap_S_RegisterSound("sound/weapons/grenade/grenpulse3.wav", qfalse);
+	cgs.media.grenadePulseSound[3] = trap_S_RegisterSound("sound/weapons/grenade/grenpulse4.wav", qfalse);
+
 
 	cgs.media.boneBounceSound = trap_S_RegisterSound("sound/world/boardbreak.wav", qfalse);          // TODO: need a real sound for this
 
