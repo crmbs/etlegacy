@@ -1858,6 +1858,8 @@ extern void CG_AddBulletParticles(vec3_t origin, vec3_t dir, int speed, int dura
 
 void CG_PlayHitSound(const int clientNum, const int hitSound)
 {
+	static int bodyshotcnt = 0;
+
 	// Do we have hitsounds even enabled
 	if (!(cg_hitSounds.integer & HITSOUNDS_ON))
 	{
@@ -1891,18 +1893,36 @@ void CG_PlayHitSound(const int clientNum, const int hitSound)
 			}
 			else if (!(cg_hitSounds.integer & HITSOUNDS_NOBODYSHOT))
 			{
-				trap_S_StartLocalSound(cgs.media.bodyShot, CHAN_LOCAL_SOUND);
+				trap_S_StartLocalSound(cgs.media.bodyShot[BODYSHOTSOUND_HIT][bodyshotcnt], CHAN_LOCAL_SOUND);
 			}
 			break;
 		case HIT_BODYSHOT:
 			if (!(cg_hitSounds.integer & HITSOUNDS_NOBODYSHOT))
 			{
-				trap_S_StartLocalSound(cgs.media.bodyShot, CHAN_LOCAL_SOUND);
+				trap_S_StartLocalSound(cgs.media.bodyShot[BODYSHOTSOUND_HIT][bodyshotcnt], CHAN_LOCAL_SOUND);
 			}
 			break;
 		default:
 			CG_DPrintf("Unkown hitsound: %i\n", hitSound);
 			break;
+	}
+
+	{
+		int rval = rand() & 2;
+
+		if (bodyshotcnt != rval)
+		{
+			bodyshotcnt = rval;
+		}
+		else
+		{
+			bodyshotcnt++;
+		}
+
+		if (bodyshotcnt > 2)
+		{
+			bodyshotcnt = 0;
+		}
 	}
 }
 
