@@ -1774,11 +1774,17 @@ void CG_Debriefing_Startup(void)
 	}
 	else if (Q_atoi(buf))
 	{
-		trap_S_StartLocalSound(trap_S_RegisterSound("sound/music/allies_win.wav", qfalse), CHAN_LOCAL_SOUND);
+		// rtcw - update end of round music
+		// trap_S_StartLocalSound(trap_S_RegisterSound("sound/music/allies_win.wav", qfalse), CHAN_LOCAL_SOUND);
+		trap_S_StartLocalSound(trap_S_RegisterSound("sound/multiplayer/music/l_complete_2.wav", qfalse), CHAN_LOCAL_SOUND);		
+		// rtcw - update end of round music
 	}
 	else
 	{
-		trap_S_StartLocalSound(trap_S_RegisterSound("sound/music/axis_win.wav", qfalse), CHAN_LOCAL_SOUND);
+		// rtcw - update end of round music
+		// trap_S_StartLocalSound(trap_S_RegisterSound("sound/music/axis_win.wav", qfalse), CHAN_LOCAL_SOUND);
+		trap_S_StartLocalSound(trap_S_RegisterSound("sound/multiplayer/music/s_stinglow.wav", qfalse), CHAN_LOCAL_SOUND);	
+		// rtcw - update end of round music
 	}
 }
 
