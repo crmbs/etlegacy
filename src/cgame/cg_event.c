@@ -467,17 +467,17 @@ static fxSound_t fxSounds[FXTYPE_MAX] =
 	// wood
 	{ 1, { -1, -1, -1 }, { "sound/world/boardbreak.wav",  NULL,                          NULL                          } },
 	// glass
-	{ 3, { -1, -1, -1 }, { "sound/world/glassbreak1.wav", "sound/world/glassbreak2.wav", "sound/world/glassbreak3.wav" } },
+	{ 1, { -1, -1, -1 }, { "sound/world/glassbreak.wav",  NULL,                          NULL                          } },
 	// metal
 	{ 1, { -1, -1, -1 }, { "sound/world/metalbreak.wav",  NULL,                          NULL                          } },
 	// gibs
-	{ 1, { -1, -1, -1 }, { "sound/player/gib.wav",        NULL,                          NULL                          } }, // "sound/world/gibsplit1.wav"
+	{ 1, { -1, -1, -1 }, { "sound/player/gibsplit1.wav",  NULL,                          NULL                          } }, // "sound/world/gibsplit1.wav"
 	// brick
-	{ 1, { -1, -1, -1 }, { "sound/world/debris1.wav",     NULL,                          NULL                          } },
+	{ 1, { -1, -1, -1 }, { "sound/world/brickfall.wav",   NULL,                          NULL                          } },
 	// stone
 	{ 1, { -1, -1, -1 }, { "sound/world/stonefall.wav",   NULL,                          NULL                          } },
 	// fabric
-	{ 1, { -1, -1, -1 }, { "sound/world/fabricbreak.wav", NULL,                          NULL                          } }
+	{ 1, { -1, -1, -1 }, { NULL, 						  NULL,                          NULL                          } }
 };
 
 /**

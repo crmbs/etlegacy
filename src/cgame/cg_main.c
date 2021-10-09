@@ -1324,12 +1324,12 @@ void CG_RegisterGameSounds()
 	cgs.cachedSounds[GAMESOUND_BLANK]         = trap_S_RegisterSound("sound/player/default/blank.wav", qfalse);
 	cgs.cachedSounds[GAMESOUND_PLAYER_GURP1]  = trap_S_RegisterSound("sound/player/gurp1.wav", qfalse);
 	cgs.cachedSounds[GAMESOUND_PLAYER_GURP2]  = trap_S_RegisterSound("sound/player/gurp2.wav", qfalse);
-	cgs.cachedSounds[GAMESOUND_PLAYER_BUBBLE] = trap_S_RegisterSound("sound/world/bubbles.wav", qfalse);
+	cgs.cachedSounds[GAMESOUND_PLAYER_BUBBLE] = trap_S_RegisterSound("sound/world/underwater03.wav", qfalse);
 
 	cgs.cachedSounds[GAMESOUND_WORLD_CHAIRCREAK]     = trap_S_RegisterSound("sound/world/chaircreak.wav", qfalse);
 	cgs.cachedSounds[GAMESOUND_WORLD_BUILD]          = trap_S_RegisterSound("sound/world/build.wav", qfalse);
 	cgs.cachedSounds[GAMESOUND_WORLD_MG_CONSTRUCTED] = trap_S_RegisterSound("sound/world/mg_constructed.wav", qfalse);
-	cgs.cachedSounds[GAMESOUND_WPN_AIRSTRIKE_PLANE]  = trap_S_RegisterSound("sound/weapons/airstrike/airstrike_plane.wav", qfalse);
+	cgs.cachedSounds[GAMESOUND_WPN_AIRSTRIKE_PLANE]  = trap_S_RegisterSound("sound/multiplayer/airstrike_01.wav", qfalse);
 	//cgs.cachedSounds[GAMESOUND_WPN_ARTILLERY_FLY_1]  = trap_S_RegisterSound("sound/weapons/artillery/artillery_fly_1.wav", qfalse);   // moved in weap file
 	//cgs.cachedSounds[GAMESOUND_WPN_ARTILLERY_FLY_2]  = trap_S_RegisterSound("sound/weapons/artillery/artillery_fly_2.wav", qfalse);   // moved in weap file
 	//cgs.cachedSounds[GAMESOUND_WPN_ARTILLERY_FLY_3]  = trap_S_RegisterSound("sound/weapons/artillery/artillery_fly_3.wav", qfalse);   // moved in weap file
@@ -1366,8 +1366,8 @@ static void CG_RegisterSounds(void)
 		speaker->noise = trap_S_RegisterSound(speaker->filename, qfalse);
 	}
 
-	cgs.media.noFireUnderwater = trap_S_RegisterSound("sound/weapons/misc/fire_water.wav", qfalse);
-	cgs.media.selectSound      = trap_S_RegisterSound("sound/weapons/misc/change.wav", qfalse);
+	cgs.media.noFireUnderwater = trap_S_RegisterSound("sound/weapons/underwaterfire.wav", qfalse);
+	cgs.media.selectSound      = trap_S_RegisterSound("sound/weapons/change.wav", qfalse);
 	cgs.media.landHurt         = trap_S_RegisterSound("sound/player/land_hurt.wav", qfalse);
 	cgs.media.gibSound         = trap_S_RegisterSound("sound/player/gib.wav", qfalse);
 
@@ -1462,10 +1462,10 @@ static void CG_RegisterSounds(void)
 
 	cgs.media.teamShot = trap_S_RegisterSound("sound/hitsounds/hitteam.wav", qfalse);
 
-	cgs.media.flameSound       = trap_S_RegisterSound("sound/weapons/flamethrower/flame_burn.wav", qfalse);
-	cgs.media.flameBlowSound   = trap_S_RegisterSound("sound/weapons/flamethrower/flame_pilot.wav", qfalse);
-	cgs.media.flameStartSound  = trap_S_RegisterSound("sound/weapons/flamethrower/flame_up.wav", qfalse);
-	cgs.media.flameStreamSound = trap_S_RegisterSound("sound/weapons/flamethrower/flame_fire.wav", qfalse);
+	cgs.media.flameSound       = trap_S_RegisterSound("sound/weapons/flamethrower/fl_fire.wav", qfalse);
+	cgs.media.flameBlowSound   = trap_S_RegisterSound("sound/weapons/flamethrower/fl_blow.wav", qfalse);
+	cgs.media.flameStartSound  = trap_S_RegisterSound("sound/weapons/flamethrower/fl_start.wav", qfalse);
+	cgs.media.flameStreamSound = trap_S_RegisterSound("sound/weapons/flamethrower/fl_stream.wav", qfalse);
 
 	cgs.media.grenadePulseSound[0] = trap_S_RegisterSound("sound/weapons/grenade/grenpulse1.wav", qfalse);
 	cgs.media.grenadePulseSound[1] = trap_S_RegisterSound("sound/weapons/grenade/grenpulse2.wav", qfalse);
@@ -1475,7 +1475,7 @@ static void CG_RegisterSounds(void)
 
 	cgs.media.boneBounceSound = trap_S_RegisterSound("sound/world/boardbreak.wav", qfalse);          // TODO: need a real sound for this
 
-	cgs.media.sfx_rockexp = trap_S_RegisterSound("sound/weapons/rocket/rocket_expl.wav", qfalse);
+	cgs.media.sfx_rockexp = trap_S_RegisterSound("sound/weapons/rocket/rocklx1a.wav", qfalse);
 
 	for (i = 0; i < 3; i++)
 	{
@@ -1512,7 +1512,7 @@ static void CG_RegisterSounds(void)
 	cgs.media.sndMedicCallAxis[1] = trap_S_RegisterSound("sound/multiplayer/axis/g-medic3.wav", qfalse);
 	// rtcw - enable random medic calls
 
-	cgs.media.shoveSound = trap_S_RegisterSound("sound/weapons/impact/flesh1.wav", qfalse);
+	cgs.media.shoveSound = trap_S_RegisterSound("sound/working/bullethitflesh1.wav", qfalse);
 
 	cgs.media.gibLeg       = trap_R_RegisterModel("models/gibs/leg.md3");
 	cgs.media.gibIntestine = trap_R_RegisterModel("models/gibs/intestine.md3");
