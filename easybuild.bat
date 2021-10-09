@@ -2,7 +2,7 @@
 :: Easybuild - Generate a clean ET:L build
 ::
 :: Change MSVS version to your own
-:: Install assets in fs_homepath/etmain
+:: Install assets in fs_homepath/rtcwmain
 ::
 
 @echo off
@@ -18,7 +18,7 @@ SET build_dir=!batloc!build
 SET project_dir=!batloc!project
 
 SET build_64=0
-SET mod_only=0
+SET mod_only=1
 SET use_autoupdate=1
 SET use_extra=1
 SET build_r2=0
@@ -150,7 +150,7 @@ GOTO:EOF
 	IF /I "!curvar!"=="crust" GOTO:UNCRUSTCODE
 	IF /I "!curvar!"=="project" CALL:OPENPROJECT
 	:: download assets to the homepath if they do not exist
-	IF /I "!curvar!"=="download" CALL:DOWNLOADPAKS "https://mirror.etlegacy.com/etmain/"
+	IF /I "!curvar!"=="download" CALL:DOWNLOADPAKS "https://mirror.etlegacy.com/rtcwmain/"
 	IF /I "!curvar!"=="open" explorer !game_basepath!
 	IF /I "!curvar!"=="release" CALL:DORELEASE
 GOTO:EOF
@@ -181,7 +181,7 @@ GOTO:EOF
 	CALL:COPYFROMPATH "%cd%\" "et*.exe renderer_opengl*.dll" "!game_basepath!\"
 	CALL:COPYFROMPATH "%cd%\legacy\" "*.pk3 qagame*.dll *.dat" "!game_basepath!\%modname%\"
 	CD !batloc!
-	CALL:COPYFROMPATH "%cd%\misc\etmain\" "*" "!game_basepath!\etmain\"
+	CALL:COPYFROMPATH "%cd%\misc\rtcwmain\" "*" "!game_basepath!\rtcwmain\"
 	CALL:COPYFROMPATH "%cd%\misc\" "description.txt" "!game_basepath!\%modname%\"
 	CALL:COPYFROMPATH "%cd%\docs\" "INSTALL.txt" "!game_basepath!"
 	CALL:COPYFROMPATH "%cd%\" "COPYING.txt" "!game_basepath!"
@@ -313,18 +313,18 @@ GOTO:EOF
 GOTO:EOF
 
 :DOWNLOADPAKS
-	IF NOT EXIST "!game_homepath!\etmain" (
-		md "!game_homepath!\etmain"
+	IF NOT EXIST "!game_homepath!\rtcwmain" (
+		md "!game_homepath!\rtcwmain"
 	)
 
-	IF NOT EXIST "!game_homepath!\etmain\pak0.pk3" (
-		bitsadmin /transfer "pak0" %~1pak0.pk3 "!game_homepath!\etmain\pak0.pk3"
+	IF NOT EXIST "!game_homepath!\rtcwmain\pak0.pk3" (
+		bitsadmin /transfer "pak0" %~1pak0.pk3 "!game_homepath!\rtcwmain\pak0.pk3"
 	)
-	IF NOT EXIST "!game_homepath!\etmain\pak1.pk3" (
-		bitsadmin /transfer "pak1" %~1pak1.pk3 "!game_homepath!\etmain\pak1.pk3"
+	IF NOT EXIST "!game_homepath!\rtcwmain\pak1.pk3" (
+		bitsadmin /transfer "pak1" %~1pak1.pk3 "!game_homepath!\rtcwmain\pak1.pk3"
 	)
-	IF NOT EXIST "!game_homepath!\etmain\pak2.pk3" (
-		bitsadmin /transfer "pak2" %~1pak2.pk3 "!game_homepath!\etmain\pak2.pk3"
+	IF NOT EXIST "!game_homepath!\rtcwmain\pak2.pk3" (
+		bitsadmin /transfer "pak2" %~1pak2.pk3 "!game_homepath!\rtcwmain\pak2.pk3"
 	)
 GOTO:EOF
 
