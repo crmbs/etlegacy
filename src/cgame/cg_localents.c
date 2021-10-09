@@ -635,10 +635,14 @@ void CG_FragmentBounceSound(localEntity_t *le, trace_t *trace)
 	}
 	break;
 	case LEBS_ROCK:
-		trap_S_StartSound(trace->endpos, -1, CHAN_AUTO, cgs.media.sfx_rubbleBounce[(rand() % 3)]);
+		// rtcw - remove until better option available 
+		// trap_S_StartSound(trace->endpos, -1, CHAN_AUTO, cgs.media.sfx_rubbleBounce[(rand() % 3)]);
+		// rtcw - remove until better option available 
 		break;
 	case LEBS_BONE:
-		trap_S_StartSound(trace->endpos, -1, CHAN_AUTO, cgs.media.boneBounceSound);
+		// rtcw - remove until better option available 
+		// trap_S_StartSound(trace->endpos, -1, CHAN_AUTO, cgs.media.boneBounceSound);
+		// rtcw - remove until better option available 
 		break;
 	default:
 		return;

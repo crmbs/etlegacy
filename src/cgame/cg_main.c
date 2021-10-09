@@ -1488,8 +1488,9 @@ static void CG_RegisterSounds(void)
 		cgs.media.sfx_brassSound[BRASSSOUND_STONE][i][1] = trap_S_RegisterSound(va("sound/weapons/misc/sg_shell_stone%i.wav", i + 1), qfalse);
 		cgs.media.sfx_brassSound[BRASSSOUND_WOOD][i][0]  = trap_S_RegisterSound(va("sound/weapons/misc/shell_wood%i.wav", i + 1), qfalse);
 		cgs.media.sfx_brassSound[BRASSSOUND_WOOD][i][1]  = trap_S_RegisterSound(va("sound/weapons/misc/sg_shell_wood%i.wav", i + 1), qfalse);
-		cgs.media.sfx_rubbleBounce[i]                    = trap_S_RegisterSound(va("sound/world/debris%i.wav", i + 1), qfalse);
 	}
+
+	cgs.media.sfx_rubbleBounce = trap_S_RegisterSound("sound/world/brickfallshort.wav", qfalse);
 
 	cgs.media.uniformPickup     = trap_S_RegisterSound("sound/misc/body_pickup.wav", qfalse);
 	cgs.media.buildDecayedSound = trap_S_RegisterSound("sound/world/build_abort.wav", qfalse);
@@ -1778,12 +1779,13 @@ static void CG_RegisterGraphics(void)
 	cgs.media.medicReviveShader     = trap_R_RegisterShader("sprites/medic_revive");
 	cgs.media.disguisedShader       = trap_R_RegisterShader("sprites/undercover");
 
-	cgs.media.constructShader = trap_R_RegisterShaderNoMip("sprites/construct");
-	cgs.media.destroyShader   = trap_R_RegisterShaderNoMip("sprites/destroy");
-	cgs.media.escortShader    = trap_R_RegisterShaderNoMip("sprites/escort");
-	cgs.media.attackShader    = trap_R_RegisterShaderNoMip("sprites/attack");
-	cgs.media.defendShader    = trap_R_RegisterShaderNoMip("sprites/defend");
-	cgs.media.regroupShader   = trap_R_RegisterShaderNoMip("sprites/regroup");
+	cgs.media.constructShader 		= trap_R_RegisterShaderNoMip("sprites/construct");
+	cgs.media.destroyShader   		= trap_R_RegisterShaderNoMip("sprites/destroy");
+	cgs.media.escortShader    		= trap_R_RegisterShaderNoMip("sprites/escort");
+	cgs.media.attackBlueShader      = trap_R_RegisterShaderNoMip("sprites/attack_blue");
+	cgs.media.attackRedShader       = trap_R_RegisterShaderNoMip("sprites/attack_red");
+	cgs.media.defendShader          = trap_R_RegisterShaderNoMip("sprites/defend");
+	cgs.media.regroupShader         = trap_R_RegisterShaderNoMip("sprites/regroup");
 
 	cgs.media.voiceChatShader = trap_R_RegisterShader("sprites/voiceChat");
 	cgs.media.balloonShader   = trap_R_RegisterShader("sprites/balloon3");
@@ -1849,24 +1851,27 @@ static void CG_RegisterGraphics(void)
 	cgs.media.ccStamps[0] = trap_R_RegisterShaderNoMip("ui/assets2/stamp_complete");
 	cgs.media.ccStamps[1] = trap_R_RegisterShaderNoMip("ui/assets2/stamp_failed");
 
-	cgs.media.ccPlayerHighlight    = trap_R_RegisterShaderNoMip("ui/assets/mp_player_highlight.tga");
-	cgs.media.ccConstructIcon[0]   = trap_R_RegisterShaderNoMip("gfx/limbo/cm_constaxis");
-	cgs.media.ccConstructIcon[1]   = trap_R_RegisterShaderNoMip("gfx/limbo/cm_constallied");
-	cgs.media.ccDestructIcon[0][0] = trap_R_RegisterShaderNoMip("gfx/limbo/cm_axisgren");
-	cgs.media.ccDestructIcon[0][1] = trap_R_RegisterShaderNoMip("gfx/limbo/cm_alliedgren");
-	cgs.media.ccDestructIcon[1][0] = trap_R_RegisterShaderNoMip("gfx/limbo/cm_satchel");
-	cgs.media.ccDestructIcon[1][1] = trap_R_RegisterShaderNoMip("gfx/limbo/cm_satchel");
-	cgs.media.ccDestructIcon[2][0] = trap_R_RegisterShaderNoMip("gfx/limbo/cm_dynamite");
-	cgs.media.ccDestructIcon[2][1] = trap_R_RegisterShaderNoMip("gfx/limbo/cm_dynamite");
-	cgs.media.ccTankIcon           = trap_R_RegisterShaderNoMip("gfx/limbo/cm_churchill"); // FIXME: add gfx/limbo/cm_jagdpanther?
+	// rtcw - remove command map
+	// cgs.media.ccPlayerHighlight    = trap_R_RegisterShaderNoMip("ui/assets/mp_player_highlight.tga");
+	
+	// cgs.media.ccConstructIcon[0]   = trap_R_RegisterShaderNoMip("gfx/limbo/cm_constaxis");
+	// cgs.media.ccConstructIcon[1]   = trap_R_RegisterShaderNoMip("gfx/limbo/cm_constallied");
+	// cgs.media.ccDestructIcon[0][0] = trap_R_RegisterShaderNoMip("gfx/limbo/cm_axisgren");
+	// cgs.media.ccDestructIcon[0][1] = trap_R_RegisterShaderNoMip("gfx/limbo/cm_alliedgren");
+	// cgs.media.ccDestructIcon[1][0] = trap_R_RegisterShaderNoMip("gfx/limbo/cm_satchel");
+	// cgs.media.ccDestructIcon[1][1] = trap_R_RegisterShaderNoMip("gfx/limbo/cm_satchel");
+	// cgs.media.ccDestructIcon[2][0] = trap_R_RegisterShaderNoMip("gfx/limbo/cm_dynamite");
+	// cgs.media.ccDestructIcon[2][1] = trap_R_RegisterShaderNoMip("gfx/limbo/cm_dynamite");
+	// cgs.media.ccTankIcon           = trap_R_RegisterShaderNoMip("gfx/limbo/cm_churchill"); // FIXME: add gfx/limbo/cm_jagdpanther?
+	
+	// cgs.media.ccCmdPost[0] = trap_R_RegisterShaderNoMip("gfx/limbo/cm_bo_axis");
+	// cgs.media.ccCmdPost[1] = trap_R_RegisterShaderNoMip("gfx/limbo/cm_bo_allied");
 
-	cgs.media.ccCmdPost[0] = trap_R_RegisterShaderNoMip("gfx/limbo/cm_bo_axis");
-	cgs.media.ccCmdPost[1] = trap_R_RegisterShaderNoMip("gfx/limbo/cm_bo_allied");
-
-	cgs.media.ccMortarHit       = trap_R_RegisterShaderNoMip("gfx/limbo/cm_mort_hit");
-	cgs.media.ccMortarTarget    = trap_R_RegisterShaderNoMip("gfx/limbo/cm_mort_target");
-	cgs.media.mortarTarget      = trap_R_RegisterShaderNoMip("gfx/limbo/mort_target");
-	cgs.media.mortarTargetArrow = trap_R_RegisterShaderNoMip("gfx/limbo/mort_targetarrow");
+	// cgs.media.ccMortarHit       = trap_R_RegisterShaderNoMip("gfx/limbo/cm_mort_hit");
+	// cgs.media.ccMortarTarget    = trap_R_RegisterShaderNoMip("gfx/limbo/cm_mort_target");
+	// cgs.media.mortarTarget      = trap_R_RegisterShaderNoMip("gfx/limbo/mort_target");
+	// cgs.media.mortarTargetArrow = trap_R_RegisterShaderNoMip("gfx/limbo/mort_targetarrow");
+	// rtcw - remove command map
 
 	cgs.media.skillPics[SK_BATTLE_SENSE]                             = trap_R_RegisterShaderNoMip("gfx/limbo/ic_battlesense");
 	cgs.media.skillPics[SK_EXPLOSIVES_AND_CONSTRUCTION]              = trap_R_RegisterShaderNoMip("gfx/limbo/ic_engineer");
@@ -1931,7 +1936,7 @@ static void CG_RegisterGraphics(void)
 	{
 		switch (i) {
 			// do not register these weapons
-			case WP_KAR98:
+			case WP_KAR98:			
 			case WP_CARBINE: 
 			case WP_LANDMINE:
 			case WP_SATCHEL:
@@ -1939,6 +1944,7 @@ static void CG_RegisterGraphics(void)
 			case WP_MOBILE_MG42:
 			case WP_K43:
 			case WP_MORTAR:
+			case WP_MORTAR_SET:
 			case WP_GPG40:
 			case WP_M7:
 			case WP_K43_SCOPE:
@@ -1948,7 +1954,8 @@ static void CG_RegisterGraphics(void)
 			case WP_MOBILE_BROWNING_SET:
 			case WP_MORTAR2:
 			case WP_MORTAR2_SET:
-			case WP_MP34:
+			case WP_BAZOOKA:
+			case WP_MP34:			
 				break;
 			default:
 				CG_RegisterWeapon(i, qfalse);
@@ -1968,6 +1975,7 @@ static void CG_RegisterGraphics(void)
 			case WP_MOBILE_MG42:
 			case WP_K43:
 			case WP_MORTAR:
+			case WP_MORTAR_SET:
 			case WP_GPG40:
 			case WP_M7:
 			case WP_K43_SCOPE:
@@ -1977,6 +1985,7 @@ static void CG_RegisterGraphics(void)
 			case WP_MOBILE_BROWNING_SET:
 			case WP_MORTAR2:
 			case WP_MORTAR2_SET:
+			case WP_BAZOOKA:
 			case WP_MP34:
 				break;
 			default:

@@ -1745,34 +1745,53 @@ qhandle_t CG_GetCompassIcon(entityState_t *ent, qboolean drawAllVoicesChat, qboo
 			{
 				if (cg.predictedPlayerState.persistant[PERS_TEAM] == TEAM_AXIS)
 				{
-					return ent->teamNum == TEAM_AXIS ? cgs.media.defendShader : cgs.media.attackShader;
+					return ent->teamNum == TEAM_AXIS ? cgs.media.defendShader : cgs.media.attackRedShader;
 				}
 				else
 				{
-					return ent->teamNum == TEAM_AXIS ? cgs.media.attackShader : cgs.media.defendShader;
+					return ent->teamNum == TEAM_AXIS ? cgs.media.attackBlueShader : cgs.media.defendShader;
 				}
 			}
 		}
 
 		if (drawSecondaryObj)
 		{
-			// draw explosives if an engineer
 			if (cg.predictedPlayerState.stats[STAT_PLAYER_CLASS] == PC_ENGINEER ||
 			    (cg.predictedPlayerState.stats[STAT_PLAYER_CLASS] == PC_COVERTOPS && ent->effect1Time == 1))
 			{
-				if (ent->teamNum == 1 && cg.predictedPlayerState.persistant[PERS_TEAM] == TEAM_AXIS)
+				if (cg.predictedPlayerState.persistant[PERS_TEAM] == TEAM_AXIS)
 				{
-					return 0;
+					return ent->teamNum == TEAM_AXIS ? cgs.media.defendShader : cgs.media.attackRedShader;
 				}
-
-				if (ent->teamNum == 2 && cg.predictedPlayerState.persistant[PERS_TEAM] == TEAM_ALLIES)
+				else
 				{
-					return 0;
+					return ent->teamNum == TEAM_AXIS ? cgs.media.attackBlueShader : cgs.media.defendShader;
 				}
-
-				return cgs.media.destroyShader;
 			}
 		}
+
+		// rtcw - use team colour
+		// if (drawSecondaryObj)
+		// {
+		// 	// draw explosives if an engineer
+		// 	if (cg.predictedPlayerState.stats[STAT_PLAYER_CLASS] == PC_ENGINEER ||
+		// 	    (cg.predictedPlayerState.stats[STAT_PLAYER_CLASS] == PC_COVERTOPS && ent->effect1Time == 1))
+		// 	{
+		// 		if (ent->teamNum == 1 && cg.predictedPlayerState.persistant[PERS_TEAM] == TEAM_AXIS)
+		// 		{
+		// 			return 0;
+		// 		}
+
+		// 		if (ent->teamNum == 2 && cg.predictedPlayerState.persistant[PERS_TEAM] == TEAM_ALLIES)
+		// 		{
+		// 			return 0;
+		// 		}
+
+		// 		return cgs.media.destroyShader;
+		// 	}
+		// }
+		// rtcw - use team colour
+		
 		break;
 	}
 	case ET_CONSTRUCTIBLE_INDICATOR:
@@ -1792,11 +1811,11 @@ qhandle_t CG_GetCompassIcon(entityState_t *ent, qboolean drawAllVoicesChat, qboo
 			{
 				if (cg.predictedPlayerState.persistant[PERS_TEAM] == TEAM_AXIS)
 				{
-					return ent->teamNum == TEAM_AXIS ? cgs.media.defendShader : cgs.media.attackShader;
+					return ent->teamNum == TEAM_AXIS ? cgs.media.defendShader : cgs.media.attackRedShader;
 				}
 				else
 				{
-					return ent->teamNum == TEAM_AXIS ? cgs.media.attackShader : cgs.media.defendShader;
+					return ent->teamNum == TEAM_AXIS ? cgs.media.attackBlueShader : cgs.media.defendShader;
 				}
 			}
 		}
@@ -1838,11 +1857,11 @@ qhandle_t CG_GetCompassIcon(entityState_t *ent, qboolean drawAllVoicesChat, qboo
 			{
 				if (cg.predictedPlayerState.persistant[PERS_TEAM] == TEAM_AXIS)
 				{
-					return ent->teamNum == TEAM_AXIS ? cgs.media.defendShader : cgs.media.attackShader;
+					return ent->teamNum == TEAM_AXIS ? cgs.media.defendShader : cgs.media.attackRedShader;
 				}
 				else
 				{
-					return ent->teamNum == TEAM_AXIS ? cgs.media.attackShader : cgs.media.defendShader;
+					return ent->teamNum == TEAM_AXIS ? cgs.media.attackBlueShader : cgs.media.defendShader;
 				}
 			}
 		}
@@ -1877,11 +1896,11 @@ qhandle_t CG_GetCompassIcon(entityState_t *ent, qboolean drawAllVoicesChat, qboo
 			{
 				if (cg.predictedPlayerState.persistant[PERS_TEAM] == TEAM_AXIS)
 				{
-					return ent->teamNum == TEAM_AXIS ? cgs.media.defendShader : cgs.media.attackShader;
+					return ent->teamNum == TEAM_AXIS ? cgs.media.defendShader : cgs.media.attackRedShader;
 				}
 				else
 				{
-					return ent->teamNum == TEAM_AXIS ? cgs.media.attackShader : cgs.media.defendShader;
+					return ent->teamNum == TEAM_AXIS ? cgs.media.attackBlueShader : cgs.media.defendShader;
 				}
 			}
 		}
@@ -1901,23 +1920,25 @@ qhandle_t CG_GetCompassIcon(entityState_t *ent, qboolean drawAllVoicesChat, qboo
 	}
 	case ET_TRAP:
 	{
-		if (drawSecondaryObj)
-		{
-			if (ent->frame == 0)
-			{
-				return cgs.media.regroupShader;
-			}
+		// rtcw - not sure how this works so removing for now
+		// if (drawSecondaryObj)
+		// {
+		// 	if (ent->frame == 0)
+		// 	{
+		// 		return cgs.media.regroupShader;
+		// 	}
 
-			if (ent->frame == 4)
-			{
-				return cg.predictedPlayerState.persistant[PERS_TEAM] == TEAM_AXIS ? cgs.media.regroupShader : cgs.media.defendShader;
-			}
+		// 	if (ent->frame == 4)
+		// 	{
+		// 		return cg.predictedPlayerState.persistant[PERS_TEAM] == TEAM_AXIS ? cgs.media.regroupShader : cgs.media.defendShader;
+		// 	}
 
-			if (ent->frame == 3)
-			{
-				return cg.predictedPlayerState.persistant[PERS_TEAM] == TEAM_ALLIES ? cgs.media.regroupShader : cgs.media.defendShader;
-			}
-		}
+		// 	if (ent->frame == 3)
+		// 	{
+		// 		return cg.predictedPlayerState.persistant[PERS_TEAM] == TEAM_ALLIES ? cgs.media.regroupShader : cgs.media.defendShader;
+		// 	}
+		// }
+		// rtcw - not sure how this works so removing for now
 		break;
 	}
 	// FIXME: ET_COMMANDMAP_MARKER, ET_HEALER, ET_SUPPLIER
