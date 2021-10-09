@@ -47,7 +47,7 @@
  *    path.
  * 3. In a ui script, specify a font, smallFont, and bigFont keyword with font
  *    name and point size.
- *    The new TrueType fonts must exist in the etmain directory at this point.
+ *    The new TrueType fonts must exist in the rtcwmain directory at this point.
  * 4. Run the game with +set r_saveFontData 1.
  *    NOTE: you must specify r_saveFontData before the game is started.
  *    Setting it ingame is pointless as it will get reset to 0 when you restart

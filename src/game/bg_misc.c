@@ -35,7 +35,7 @@
 
 #include "../qcommon/q_shared.h"
 #include "bg_public.h"
-#include "../../etmain/ui/menudef.h"
+#include "../../rtcwmain/ui/menudef.h"
 
 #ifdef GAMEDLL
 extern vmCvar_t g_developer;

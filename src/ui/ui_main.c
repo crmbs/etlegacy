@@ -6601,7 +6601,7 @@ static void UI_BuildServerDisplayList(qboolean force)
 					}
 					break;
 				case 12:
-					if (Q_stristr(gamename, "etmain") == 0 || gamename[0] == '\0')
+					if (Q_stristr(gamename, "rtcwmain") == 0 || gamename[0] == '\0')
 					{
 						trap_LAN_MarkServerVisible(ui_netSource.integer, i, qfalse);
 						continue;
@@ -6621,7 +6621,7 @@ static void UI_BuildServerDisplayList(qboolean force)
 					    Q_stristr(gamename, "etrun") != 0 ||
 					    Q_stristr(gamename, "etjump") != 0 ||
 					    Q_stristr(gamename, "tjmod") != 0 ||
-					    Q_stristr(gamename, "etmain") != 0 ||
+					    Q_stristr(gamename, "rtcwmain") != 0 ||
 					    gamename[0] == 0)
 					{
 						trap_LAN_MarkServerVisible(ui_netSource.integer, i, qfalse);
@@ -7516,7 +7516,7 @@ const char *UI_FeederItemText(int feederID, int index, int column, qhandle_t *ha
 						{
 							handles[3] = uiInfo.modFilter_tjmod;
 						}
-						else if (Q_stristr(gamename, "etmain") != 0 || gamename[0] == '\0')
+						else if (Q_stristr(gamename, "rtcwmain") != 0 || gamename[0] == '\0')
 						{
 							handles[3] = uiInfo.modFilter_etmain;
 						}

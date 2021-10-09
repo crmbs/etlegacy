@@ -9,6 +9,9 @@
 /*.make
 CMakeLists.txt.user
 etmain/ui/git_version.h
+rtcwmain/ui/git_version.h
+/rtcwmain
+/misc/rtcwmain
 
 #
 # OS specific

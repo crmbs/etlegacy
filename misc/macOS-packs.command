@@ -37,8 +37,8 @@ if [ -f "$wolf_et_dmg" ]; then
 	msg "${YELLOW}$wolf_et_dmg ${GREEN}exists.${NOFORMAT}"
 	temp_dir=$(mktemp -d)
 	hdiutil attach "$wolf_et_dmg" -private -noverify -nobrowse -noautoopen -quiet -mountpoint "$temp_dir/et"
-	msg "Copying files paks to: ~/Library/Application Support/etlegacy/etmain"
-	cp $temp_dir/et/Wolfenstein\ ET/etmain/{pak0.pk3,pak1.pk3,pak2.pk3} ~/Library/Application\ Support/etlegacy/etmain/
+	msg "Copying files paks to: ~/Library/Application Support/etlegacy/rtcwmain"
+	cp $temp_dir/et/Wolfenstein\ ET/rtcwmain/{pak0.pk3,pak1.pk3,pak2.pk3} ~/Library/Application\ Support/etlegacy/rtcwmain/
 	msg "Unmounting the original image"
 	hdiutil unmount "$temp_dir/et"
 	msg "Removing the temporary folder"
@@ -50,9 +50,9 @@ else
 	msg "Downloading to: $wolf_et_dmg"
 	curl --fail -LJ -o $wolf_et_dmg https://cdn.splashdamage.com/downloads/games/wet/WolfET.2.60d.dmg || curl --fail -LJ -o $wolf_et_dmg https://mirror.etlegacy.com/vanilla-files/WolfET.2.60d.dmg
 	hdiutil attach "$wolf_et_dmg" -private -noverify -nobrowse -noautoopen -quiet -mountpoint "$temp_dir/et"
-	mkdir -p ~/Library/Application\ Support/etlegacy/etmain/
-	msg "Copying files paks to: ~/Library/Application Support/etlegacy/etmain"
-	cp $temp_dir/et/Wolfenstein\ ET/etmain/{pak0.pk3,pak1.pk3,pak2.pk3} ~/Library/Application\ Support/etlegacy/etmain/
+	mkdir -p ~/Library/Application\ Support/etlegacy/rtcwmain/
+	msg "Copying files paks to: ~/Library/Application Support/etlegacy/rtcwmain"
+	cp $temp_dir/et/Wolfenstein\ ET/rtcwmain/{pak0.pk3,pak1.pk3,pak2.pk3} ~/Library/Application\ Support/etlegacy/rtcwmain/
 	msg "Unmounting the original image"
 	hdiutil unmount "$temp_dir/et"
 	msg "Removing the temporary folder"

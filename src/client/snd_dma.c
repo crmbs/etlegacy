@@ -509,7 +509,7 @@ void S_Base_BeginRegistration(void)
 		Com_Memset(knownSfx, 0, sizeof(knownSfx));
 		Com_Memset(sfxHash, 0, sizeof(sfx_t *) * LOOP_HASH);
 
-		S_Base_RegisterSound("sound/player/default/blank.wav", qfalse);               // changed to a sound in etmain
+		S_Base_RegisterSound("sound/player/default/blank.wav", qfalse);               // changed to a sound in rtcwmain
 	}
 }
 

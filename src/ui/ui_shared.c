@@ -758,7 +758,9 @@ static bind_t g_bindings[] =
 	{ "+movedown",        'c',             -1,  K_LCTRL,         -1,  -1, -1, -1 },
 	{ "+leanright",       'e',             -1,  K_PGDN,          -1,  -1, -1, -1 },
 	{ "+leanleft",        'q',             -1,  K_DEL,           -1,  -1, -1, -1 },
-	{ "+prone",           'x',             -1,  K_LSHIFT,        -1,  -1, -1, -1 },
+	// rtcw - remove prone
+	// { "+prone",           'x',             -1,  K_LSHIFT,        -1,  -1, -1, -1 },
+	// rtcw - remove prone
 	{ "+attack",          K_MOUSE1,        -1,  K_MOUSE1,        -1,  -1, -1, -1 },
 	{ "weapalt",          K_MOUSE2,        -1,  K_MOUSE2,        -1,  -1, -1, -1 },
 	{ "weapprev",         K_MWHEELDOWN,    -1,  K_MWHEELDOWN,    -1,  -1, -1, -1 },
@@ -777,7 +779,9 @@ static bind_t g_bindings[] =
 	{ "+speed",           K_CAPSLOCK,      -1,  K_CAPSLOCK,      -1,  -1, -1, -1 },
 	{ "+activate",        'f',             -1,  K_ENTER,         -1,  -1, -1, -1 },
 	{ "+zoom",            'b',             -1,  'b',             -1,  -1, -1, -1 },
-	{ "+mapexpand",       'g',             -1,  '#',             -1,  -1, -1, -1 },
+	// rtcw - remove mapexpand
+	// { "+mapexpand",       'g',             -1,  '#',             -1,  -1, -1, -1 },
+	// rtcw - remove mapexpand
 	{ "dropobj",          'h',             -1,  'h',             -1,  -1, -1, -1 },
 	{ "+reload",          'r',             -1,  K_END,           -1,  -1, -1, -1 },
 	{ "kill",             'k',             -1,  'k',             -1,  -1, -1, -1 },

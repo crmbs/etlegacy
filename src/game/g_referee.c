@@ -34,7 +34,7 @@
  */
 
 #include "g_local.h"
-#include "../../etmain/ui/menudef.h"
+#include "../../rtcwmain/ui/menudef.h"
 
 /**
  * @brief Parses for a referee command.

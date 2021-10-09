@@ -8,7 +8,7 @@
 #
 # Put _bots.png in flags-iso/shiny/32 directory.
 # Put the script in flags-iso/shiny/32 and execute.
-# Copy generated world_flags.tga file to /etmain/gfx/flags/.
+# Copy generated world_flags.tga file to /rtcwmain/gfx/flags/.
 
 items=0
 current_row=""

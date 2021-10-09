@@ -40,7 +40,7 @@
 #include "../renderercommon/tr_types.h"
 #include "keycodes.h"
 
-#include "../../etmain/ui/menudef.h"
+#include "../../rtcwmain/ui/menudef.h"
 
 #define MAX_MENUDEFFILE   4096
 #define MAX_MENUFILE     32768
