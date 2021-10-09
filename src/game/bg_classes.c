@@ -47,8 +47,8 @@ bg_playerclass_t bg_playerClasses[2][NUM_PLAYER_CLASSES] =
 			{ WP_KNIFE,                SK_LIGHT_WEAPONS,                            0, 1,   0   },
 			{
 				{ WP_MP40,                 SK_LIGHT_WEAPONS,                            0, 60,  30  }, // soldier start with x2 ammo
-				{ WP_FLAMETHROWER,         SK_HEAVY_WEAPONS,                            0, 200, 0   },
 				{ WP_PANZERFAUST,          SK_HEAVY_WEAPONS,                            0, 3,   1   },
+				{ WP_FLAMETHROWER,         SK_HEAVY_WEAPONS,                            0, 200, 0   },
 			},
 			{
 				{ WP_LUGER,                SK_LIGHT_WEAPONS,                            0, 24,  8   },
@@ -166,11 +166,11 @@ bg_playerclass_t bg_playerClasses[2][NUM_PLAYER_CLASSES] =
 			"characters/temperate/allied/soldier.char",
 			"ui/assets/mp_gun_blue.tga",
 			"ui/assets/mp_arrow_blue.tga",
-			{ WP_KNIFE_KABAR,          SK_LIGHT_WEAPONS,                            0, 1,   0   },
+			{ WP_KNIFE,                SK_LIGHT_WEAPONS,                            0, 1,   0   },
 			{
 				{ WP_THOMPSON,             SK_LIGHT_WEAPONS,                            0, 60,  30  }, // soldier start with x2 ammo
+				{ WP_PANZERFAUST,          SK_HEAVY_WEAPONS,                            0, 3,   1   },
 				{ WP_FLAMETHROWER,         SK_HEAVY_WEAPONS,                            0, 200, 0   },
-				{ WP_BAZOOKA,              SK_HEAVY_WEAPONS,                            0, 3,   1   },
 			},
 			{
 				{ WP_COLT,                 SK_LIGHT_WEAPONS,                            0, 24,  8   },
@@ -190,7 +190,7 @@ bg_playerclass_t bg_playerClasses[2][NUM_PLAYER_CLASSES] =
 			"characters/temperate/allied/medic.char",
 			"ui/assets/mp_health_blue.tga",
 			"ui/assets/mp_arrow_blue.tga",
-			{ WP_KNIFE_KABAR,          SK_LIGHT_WEAPONS,                            0, 1,   0   },
+			{ WP_KNIFE,                SK_LIGHT_WEAPONS,                            0, 1,   0   },
 			{
 				{ WP_THOMPSON,             SK_LIGHT_WEAPONS,                            0, 0,   30  }, // medic start with 1 clip less
 			},
@@ -214,7 +214,7 @@ bg_playerclass_t bg_playerClasses[2][NUM_PLAYER_CLASSES] =
 			"characters/temperate/allied/engineer.char",
 			"ui/assets/mp_wrench_blue.tga",
 			"ui/assets/mp_arrow_blue.tga",
-			{ WP_KNIFE_KABAR,          SK_LIGHT_WEAPONS,                            0, 1,   0   },
+			{ WP_KNIFE,                SK_LIGHT_WEAPONS,                            0, 1,   0   },
 			{
 				{ WP_THOMPSON,             SK_LIGHT_WEAPONS,                            0, 30,  30  },
 			},
@@ -239,7 +239,7 @@ bg_playerclass_t bg_playerClasses[2][NUM_PLAYER_CLASSES] =
 			"characters/temperate/allied/fieldops.char",
 			"ui/assets/mp_ammo_blue.tga",
 			"ui/assets/mp_arrow_blue.tga",
-			{ WP_KNIFE_KABAR,          SK_LIGHT_WEAPONS,                            0, 1,   0   },
+			{ WP_KNIFE,                SK_LIGHT_WEAPONS,                            0, 1,   0   },
 			{
 				{ WP_THOMPSON,             SK_LIGHT_WEAPONS,                            0, 30,  30  },
 				{ WP_MP40,                 SK_LIGHT_WEAPONS,                            0, 32,  32  },
@@ -263,21 +263,19 @@ bg_playerclass_t bg_playerClasses[2][NUM_PLAYER_CLASSES] =
 			"characters/temperate/allied/cvops.char",
 			"ui/assets/mp_spy_blue.tga",
 			"ui/assets/mp_arrow_blue.tga",
-			{ WP_KNIFE_KABAR,          SK_LIGHT_WEAPONS,                            0, 1,   0   },
+			{ WP_KNIFE,                SK_LIGHT_WEAPONS,                            0, 1,   0   },
 			{
 				{ WP_STEN,                 SK_LIGHT_WEAPONS,                            0, 64,  32  }, // covert-ops start with x2 ammo
 				{ WP_FG42,                 SK_LIGHT_WEAPONS,                            0, 40,  20  },
 				{ WP_GARAND,               SK_MILITARY_INTELLIGENCE_AND_SCOPED_WEAPONS, 0, 20,  10  },
 			},
 			{
-				{ WP_SILENCED_COLT,        SK_LIGHT_WEAPONS,                            0, 24,  8   },
+				{ WP_SILENCER,             SK_LIGHT_WEAPONS,                            0, 24,  8   },
 				{ WP_AKIMBO_SILENCEDCOLT,  SK_LIGHT_WEAPONS,                            SK_LIGHT_WEAPONS_AKIMBO, 48,  8   },
 			},
 			{ WP_GRENADE_PINEAPPLE,    SK_LIGHT_WEAPONS,                            0, 2,   0   },
 			{
 				{ WP_SMOKE_BOMB,           SK_MILITARY_INTELLIGENCE_AND_SCOPED_WEAPONS, 0, 0,   1   },
-				{ WP_SATCHEL,              SK_MILITARY_INTELLIGENCE_AND_SCOPED_WEAPONS, 0, 0,   1   },
-				{ WP_SATCHEL_DET,          SK_MILITARY_INTELLIGENCE_AND_SCOPED_WEAPONS, 0, 0,   0   },
 				{ WP_BINOCULARS,           SK_BATTLE_SENSE,                             0, 0,   1   },
 			},
 			0,
