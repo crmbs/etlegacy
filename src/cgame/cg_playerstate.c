@@ -334,33 +334,36 @@ void CG_CheckLocalSounds(playerState_t *ps, playerState_t *ops)
 	{
 		int msec = cg.time - cgs.levelStartTime;
 
-		if (cgs.timelimit > 5 && !(cg.timelimitWarnings & 1) && (msec > (cgs.timelimit - 5) * 60000) &&
-		    (msec < (cgs.timelimit - 5) * 60000 + 1000)) // 60 * 1000
-		{
-			cg.timelimitWarnings |= 1;
-			if (ps->persistant[PERS_TEAM] == TEAM_AXIS)
-			{
-				if (cgs.media.fiveMinuteSound_g == -1)
-				{
-					CG_SoundPlaySoundScript(cg.fiveMinuteSound_g, NULL, -1, qtrue);
-				}
-				else if (cgs.media.fiveMinuteSound_g)
-				{
-					trap_S_StartLocalSound(cgs.media.fiveMinuteSound_g, CHAN_ANNOUNCER);
-				}
-			}
-			else if (ps->persistant[PERS_TEAM] == TEAM_ALLIES)
-			{
-				if (cgs.media.fiveMinuteSound_a == -1)
-				{
-					CG_SoundPlaySoundScript(cg.fiveMinuteSound_a, NULL, -1, qtrue);
-				}
-				else if (cgs.media.fiveMinuteSound_a)
-				{
-					trap_S_StartLocalSound(cgs.media.fiveMinuteSound_a, CHAN_ANNOUNCER);
-				}
-			}
-		}
+		// rtcw - remove unsupported sound
+		// if (cgs.timelimit > 5 && !(cg.timelimitWarnings & 1) && (msec > (cgs.timelimit - 5) * 60000) &&
+		//     (msec < (cgs.timelimit - 5) * 60000 + 1000)) // 60 * 1000
+		// {
+		// 	cg.timelimitWarnings |= 1;
+		// 	if (ps->persistant[PERS_TEAM] == TEAM_AXIS)
+		// 	{
+		// 		if (cgs.media.fiveMinuteSound_g == -1)
+		// 		{
+		// 			CG_SoundPlaySoundScript(cg.fiveMinuteSound_g, NULL, -1, qtrue);
+		// 		}
+		// 		else if (cgs.media.fiveMinuteSound_g)
+		// 		{
+		// 			trap_S_StartLocalSound(cgs.media.fiveMinuteSound_g, CHAN_ANNOUNCER);
+		// 		}
+		// 	}
+		// 	else if (ps->persistant[PERS_TEAM] == TEAM_ALLIES)
+		// 	{
+		// 		if (cgs.media.fiveMinuteSound_a == -1)
+		// 		{
+		// 			CG_SoundPlaySoundScript(cg.fiveMinuteSound_a, NULL, -1, qtrue);
+		// 		}
+		// 		else if (cgs.media.fiveMinuteSound_a)
+		// 		{
+		// 			trap_S_StartLocalSound(cgs.media.fiveMinuteSound_a, CHAN_ANNOUNCER);
+		// 		}
+		// 	}			
+		// }
+		// rtcw - remove unsupported sound
+		
 		if (cgs.timelimit > 2 && !(cg.timelimitWarnings & 2) && (msec > (cgs.timelimit - 2) * 60000) &&
 		    (msec < (cgs.timelimit - 2) * 60000 + 1000)) // 60 * 1000
 		{

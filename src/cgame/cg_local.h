@@ -1426,8 +1426,10 @@ typedef struct
 	vec4_t xhairColorAlt;
 
 	// allow overriding of countdown sounds
-	char fiveMinuteSound_g[MAX_QPATH];
-	char fiveMinuteSound_a[MAX_QPATH];
+	// rtcw - remove unsupported sound
+	// char fiveMinuteSound_g[MAX_QPATH];
+	// char fiveMinuteSound_a[MAX_QPATH];
+	// rtcw - remove unsupported sound
 	char twoMinuteSound_g[MAX_QPATH];
 	char twoMinuteSound_a[MAX_QPATH];
 	char thirtySecondSound_g[MAX_QPATH];
@@ -1778,7 +1780,9 @@ typedef struct
 	sfxHandle_t gibSound;
 	sfxHandle_t landSound[FOOTSTEP_TOTAL];
 
-	sfxHandle_t fiveMinuteSound_g, fiveMinuteSound_a;
+	// rtcw - remove unsupported sound
+	// sfxHandle_t fiveMinuteSound_g, fiveMinuteSound_a;
+	// rtcw - remove unsupported sound
 	sfxHandle_t twoMinuteSound_g, twoMinuteSound_a;
 	sfxHandle_t thirtySecondSound_g, thirtySecondSound_a;
 
@@ -1824,7 +1828,11 @@ typedef struct
 	sfxHandle_t sndRankUp;
 	sfxHandle_t sndSkillUp;
 
-	sfxHandle_t sndMedicCall[2];
+	// rtcw - enable random medic calls
+	// sfxHandle_t sndMedicCall[2];
+	sfxHandle_t sndMedicCallAllies[2];
+	sfxHandle_t sndMedicCallAxis[2];
+	// rtcw - enable random medic calls
 
 	sfxHandle_t shoveSound;
 

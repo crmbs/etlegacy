@@ -553,17 +553,21 @@ void SP_worldspawn(void)
 	CG_SpawnString("atmosphere", "", &s);
 	CG_EffectParse(s);
 
-	cg.fiveMinuteSound_g[0]                       = \
-		cg.fiveMinuteSound_a[0]                   = \
-			cg.twoMinuteSound_g[0]                = \
-				cg.twoMinuteSound_a[0]            = \
-					cg.thirtySecondSound_g[0]     = \
-						cg.thirtySecondSound_a[0] = '\0';
+	// rtcw - remove unsupported sound
+	// cg.fiveMinuteSound_g[0]                       = \
+		// cg.fiveMinuteSound_a[0]                   = \
+	// rtcw - remove unsupported sound
+	cg.twoMinuteSound_g[0]                = \
+		cg.twoMinuteSound_a[0]            = \
+			cg.thirtySecondSound_g[0]     = \
+				cg.thirtySecondSound_a[0] = '\0';
 
-	CG_SpawnString("fiveMinuteSound_axis", "axis_hq_5minutes", &s);
-	Q_strncpyz(cg.fiveMinuteSound_g, s, sizeof(cg.fiveMinuteSound_g));
-	CG_SpawnString("fiveMinuteSound_allied", "allies_hq_5minutes", &s);
-	Q_strncpyz(cg.fiveMinuteSound_a, s, sizeof(cg.fiveMinuteSound_a));
+	// rtcw - removed unsupported sound
+	// CG_SpawnString("fiveMinuteSound_axis", "axis_hq_5minutes", &s);
+	// Q_strncpyz(cg.fiveMinuteSound_g, s, sizeof(cg.fiveMinuteSound_g));
+	// CG_SpawnString("fiveMinuteSound_allied", "allies_hq_5minutes", &s);
+	// Q_strncpyz(cg.fiveMinuteSound_a, s, sizeof(cg.fiveMinuteSound_a));
+	// rtcw - removed unsupported sound
 
 	CG_SpawnString("twoMinuteSound_axis", "axis_hq_2minutes", &s);
 	Q_strncpyz(cg.twoMinuteSound_g, s, sizeof(cg.twoMinuteSound_g));
@@ -575,33 +579,37 @@ void SP_worldspawn(void)
 	CG_SpawnString("thirtySecondSound_allied", "allies_hq_30seconds", &s);
 	Q_strncpyz(cg.thirtySecondSound_a, s, sizeof(cg.thirtySecondSound_a));
 
+	// rtcw - remove unsupported sound
 	// 5 minute axis
-	if (!*cg.fiveMinuteSound_g)
-	{
-		cgs.media.fiveMinuteSound_g = 0;
-	}
-	else if (strstr(cg.fiveMinuteSound_g, ".wav") || strstr(cg.fiveMinuteSound_g, ".ogg"))
-	{
-		cgs.media.fiveMinuteSound_g = trap_S_RegisterSound(cg.fiveMinuteSound_g, qfalse);
-	}
-	else
-	{
-		cgs.media.fiveMinuteSound_g = -1;
-	}
+	// if (!*cg.fiveMinuteSound_g)
+	// {
+	// 	cgs.media.fiveMinuteSound_g = 0;
+	// }
+	// else if (strstr(cg.fiveMinuteSound_g, ".wav") || strstr(cg.fiveMinuteSound_g, ".ogg"))
+	// {
+	// 	cgs.media.fiveMinuteSound_g = trap_S_RegisterSound(cg.fiveMinuteSound_g, qfalse);
+	// }
+	// else
+	// {
+	// 	cgs.media.fiveMinuteSound_g = -1;
+	// }
+	// rtcw - remove unsupported sound
 
+	// rtcw - remove unsupported sound
 	// 5 minute allied
-	if (!*cg.fiveMinuteSound_a)
-	{
-		cgs.media.fiveMinuteSound_a = 0;
-	}
-	else if (strstr(cg.fiveMinuteSound_a, ".wav") || strstr(cg.fiveMinuteSound_a, ".ogg"))
-	{
-		cgs.media.fiveMinuteSound_a = trap_S_RegisterSound(cg.fiveMinuteSound_a, qfalse);
-	}
-	else
-	{
-		cgs.media.fiveMinuteSound_a = -1;
-	}
+	// if (!*cg.fiveMinuteSound_a)
+	// {
+	// 	cgs.media.fiveMinuteSound_a = 0;
+	// }
+	// else if (strstr(cg.fiveMinuteSound_a, ".wav") || strstr(cg.fiveMinuteSound_a, ".ogg"))
+	// {
+	// 	cgs.media.fiveMinuteSound_a = trap_S_RegisterSound(cg.fiveMinuteSound_a, qfalse);
+	// }
+	// else
+	// {
+	// 	cgs.media.fiveMinuteSound_a = -1;
+	// }
+	// rtcw - remove unsupported sound
 
 	// 2 minute axis
 	if (!*cg.twoMinuteSound_g)
