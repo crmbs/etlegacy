@@ -436,7 +436,7 @@ void SP_target_push(gentity_t *self)
 	}
 	else
 	{
-		self->noise_index = G_SoundIndex("sound/weapons/impact/flesh1.wav"); // was sound/misc/windfly.wav and not in path
+		self->noise_index = G_SoundIndex("sound/working/bullethitflesh1.wav"); // was sound/misc/windfly.wav and not in path
 	}
 	if (self->target)
 	{
