@@ -3487,39 +3487,41 @@ qboolean Bullet_Fire_Extended(gentity_t *source, gentity_t *attacker, vec3_t sta
 	VectorCopy(tr.endpos, impactPos);
 	SnapVectorTowards(impactPos, start);
 
-	if (distance_falloff)
-	{
-		vec_t  dist;
-		vec3_t shotvec;
-		float  scale;
+	// rtcw - remove distance falloff
+	// if (distance_falloff)
+	// {
+	// 	vec_t  dist;
+	// 	vec3_t shotvec;
+	// 	float  scale;
 
-		//VectorSubtract( tr.endpos, start, shotvec );
-		VectorSubtract(tr.endpos, muzzleTrace, shotvec);
+	// 	//VectorSubtract( tr.endpos, start, shotvec );
+	// 	VectorSubtract(tr.endpos, muzzleTrace, shotvec);
 
-		dist = VectorLength(shotvec);
-		// ~~~---______
-		// start at 100% at 1500 units (and before),
-		// and go to 50% at 2500 units (and after)
+	// 	dist = VectorLength(shotvec);
+	// 	// ~~~---______
+	// 	// start at 100% at 1500 units (and before),
+	// 	// and go to 50% at 2500 units (and after)
 
-		// 1500 to 2500 -> 0.0 to 1.0
-		scale = (dist - 1500.f) / (2500.f - 1500.f);
-		// 0.0 to 1.0 -> 0.0 to 0.5
-		scale *= 0.5f;
-		// 0.0 to 0.5 -> 1.0 to 0.5
-		scale = 1.0f - scale;
+	// 	// 1500 to 2500 -> 0.0 to 1.0
+	// 	scale = (dist - 1500.f) / (2500.f - 1500.f);
+	// 	// 0.0 to 1.0 -> 0.0 to 0.5
+	// 	scale *= 0.5f;
+	// 	// 0.0 to 0.5 -> 1.0 to 0.5
+	// 	scale = 1.0f - scale;
 
-		// And, finally, cap it.
-		if (scale >= 1.0f)
-		{
-			scale = 1.0f;
-		}
-		else if (scale < 0.5f)
-		{
-			scale = 0.5f;
-		}
+	// 	// And, finally, cap it.
+	// 	if (scale >= 1.0f)
+	// 	{
+	// 		scale = 1.0f;
+	// 	}
+	// 	else if (scale < 0.5f)
+	// 	{
+	// 		scale = 0.5f;
+	// 	}
 
-		damage *= scale;
-	}
+	// 	damage *= scale;
+	// }
+	// rtcw - remove distance falloff
 
 	// send bullet impact
 	if (traceEnt->takedamage && traceEnt->client)
