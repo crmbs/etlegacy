@@ -2789,7 +2789,6 @@ extern vmCvar_t cl_demooffset;
 extern vmCvar_t cl_waverecording;
 extern vmCvar_t cl_wavefilename;
 extern vmCvar_t cl_waveoffset;
-extern vmCvar_t cg_recording_statusline;
 
 extern vmCvar_t cg_announcer;
 extern vmCvar_t cg_hitSounds;
@@ -2853,6 +2852,15 @@ extern vmCvar_t cg_shoutcastTeamName2;
 extern vmCvar_t cg_shoutcastDrawHealth;
 extern vmCvar_t cg_shoutcastGrenadeTrail;
 extern vmCvar_t cg_shoutcastDrawMinimap;
+
+extern vmCvar_t cg_chatX;
+extern vmCvar_t cg_chatY;
+extern vmCvar_t cg_chatScale;
+extern vmCvar_t cg_chatAlpha;
+extern vmCvar_t cg_chatBackgroundAlpha;
+extern vmCvar_t cg_chatShadow;
+extern vmCvar_t cg_chatFlags;
+extern vmCvar_t cg_chatLineWidth;
 
 // local clock flags
 #define LOCALTIME_ON                0x01
@@ -3018,6 +3026,7 @@ void CG_DrawUpperRight(void);
 void CG_SetHud(void);
 void CG_DrawActiveHud(void);
 void CG_DrawGlobalHud(void);
+void CG_DrawDemoMessage(void);
 
 void CG_Text_PaintChar_Ext(float x, float y, float w, float h, float scalex, float scaley, float s, float t, float s2, float t2, qhandle_t hShader);
 void CG_Text_PaintChar(float x, float y, float width, float height, float scale, float s, float t, float s2, float t2, qhandle_t hShader);
@@ -4009,7 +4018,7 @@ typedef struct hudComponent_s
 typedef struct hudStructure_s
 {
 	int hudnumber;
-	hudComponent_t compas;
+	hudComponent_t compas;          // FIXME: what a typo ....
 	hudComponent_t staminabar;
 	hudComponent_t breathbar;
 	hudComponent_t healthbar;
@@ -4025,7 +4034,7 @@ typedef struct hudStructure_s
 	hudComponent_t powerups;
 	hudComponent_t hudhead;
 
-	hudComponent_t cursorhint;
+	hudComponent_t cursorhints;
 	hudComponent_t weaponstability;
 	hudComponent_t livesleft;
 
@@ -4038,6 +4047,7 @@ typedef struct hudStructure_s
 	hudComponent_t spectatortext;
 	hudComponent_t limbotext;
 	hudComponent_t followtext;
+	hudComponent_t demotext;
 
 } hudStucture_t;
 
